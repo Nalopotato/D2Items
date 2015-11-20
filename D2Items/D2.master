@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="D2.master.cs" Inherits="D2Items.D2" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <title>D2 Items</title>
+
+    <asp:ContentPlaceHolder ID="HtmlHeadPlaceholder" runat="server" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <asp:ContentPlaceHolder ID="SiteHeaderPlaceholder" runat="server">
+
+        </asp:ContentPlaceHolder>
+        <div id="content" class="container">
+            <asp:ContentPlaceHolder ID="LeftSideBarPlaceHolder" runat="server">
+                
+            </asp:ContentPlaceHolder>
+            <!-- Main Content -->
+            <div>
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentHeaderPlaceHolder" runat="server">
+                        <div class="section-header row-fluid">
+                            <h1 class="span8"><%= Page.Title%></h1>
+                        </div>
+                        <div class="row-fluid">
+                            <hr class="span12" />
+                        </div>
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+                </div>
+                <asp:ContentPlaceHolder ID="RightSideBarPlaceHolder" runat="server">
+                    
+                </asp:ContentPlaceHolder>
+            </div>
+            <!-- /Main Content -->
+        </div>
+    </form>
+</body>
+</html>
