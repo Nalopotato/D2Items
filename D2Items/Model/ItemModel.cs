@@ -15,6 +15,9 @@ namespace D2Items.Model
         public bool Ladder { get; set; }
         public int Version { get; set; }
         public int Sockets { get; set; }
+        public string BaseType1 { get; set; }
+        public string BaseType2 { get; set; }
+        public string BaseType3 { get; set; }
         public string ItemType { get; set; }
         public string Runes { get; set; }
         public int Quality { get; set; }

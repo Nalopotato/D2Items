@@ -15,6 +15,9 @@ namespace D2Items.Entity
             const string query = @"INSERT INTO
         T_Items (
             name,
+            baseType1,
+            baseType2,
+            baseType3,
             itemType,
             runes,
             quality,
@@ -28,6 +31,9 @@ namespace D2Items.Entity
         )
         VALUES (
             @name,
+            @baseType1,
+            @baseType2,
+            @baseType3,
             @itemType,
             @runes,
             @quality,
@@ -46,6 +52,9 @@ namespace D2Items.Entity
                 using (var cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.Add(new SqlParameter("@name", Item.Name));
+                    cmd.Parameters.Add(new SqlParameter("@baseType1", Item.BaseType1));
+                    cmd.Parameters.Add(new SqlParameter("@baseType2", Item.BaseType2));
+                    cmd.Parameters.Add(new SqlParameter("@baseType3", Item.BaseType3));
                     cmd.Parameters.Add(new SqlParameter("@itemType", Item.ItemType));
                     cmd.Parameters.Add(new SqlParameter("@runes", Item.Runes));
                     cmd.Parameters.Add(new SqlParameter("@quality", Item.Quality));
@@ -58,11 +67,67 @@ namespace D2Items.Entity
                     cmd.Parameters.Add(new SqlParameter("@class", Item.Class));
 
                     ConvertNullsToDBNulls(cmd.Parameters);
-                    int recordsAffected = cmd.ExecuteNonQuery();
+                    var recordsAffected = cmd.ExecuteNonQuery();
                     cmd.Connection.Close();
+
                     return recordsAffected == 1;
                 }
             }
+        }
+
+        public static bool CreateMods(ItemModel Item, List<ItemModsModel> ItemMods)
+        {
+            int count = 0;
+            int recordsAffected = 0;
+            object itemID;
+            
+            string query = @"SELECT ID FROM T_Items WHERE name = '" + Item.Name + "'";
+
+            using (var connection = new SqlConnection(D2ConnectionString))
+            {
+                connection.Open();
+                using (var cmd = new SqlCommand(query, connection))
+                {
+                    ConvertNullsToDBNulls(cmd.Parameters);
+                    itemID = cmd.ExecuteScalar();
+                    cmd.Connection.Close();
+                }
+            }
+
+            foreach (ItemModsModel ItemMod in ItemMods)
+            {
+                query = @"INSERT INTO
+
+                T_ItemMods (
+                    modID,
+                    itemID,
+                    value
+                )
+                VALUES (
+                    @modID" + count + @",
+                    @itemID" + count + @",
+                    @value" + count + @"
+                )";
+
+                using (var connection = new SqlConnection(D2ConnectionString))
+                {
+                    connection.Open();
+                    using (var cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@itemID" + count, itemID));
+                        cmd.Parameters.Add(new SqlParameter("@modID" + count, ItemMod.Mod));
+                        cmd.Parameters.Add(new SqlParameter("@value" + count, ItemMod.ModValue));
+
+                        ConvertNullsToDBNulls(cmd.Parameters);
+                        recordsAffected = cmd.ExecuteNonQuery();
+                        cmd.Connection.Close();
+
+                        count++;
+                    }
+                }
+            }
+
+            return recordsAffected == 1;
         }
     }
 }
