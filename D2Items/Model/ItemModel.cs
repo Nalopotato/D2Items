@@ -21,6 +21,7 @@ namespace D2Items.Model
         public string ItemType { get; set; }
         public string Runes { get; set; }
         public int Quality { get; set; }
+        public int Rarity { get; set; }
         public string Class { get; set; }
 
         public override string Label

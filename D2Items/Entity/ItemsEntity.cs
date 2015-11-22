@@ -21,6 +21,7 @@ namespace D2Items.Entity
             itemType,
             runes,
             quality,
+            rarity,
             lvl,
             str,
             dex,
@@ -37,6 +38,7 @@ namespace D2Items.Entity
             @itemType,
             @runes,
             @quality,
+            @rarity,
             @lvl,
             @str,
             @dex,
@@ -58,6 +60,7 @@ namespace D2Items.Entity
                     cmd.Parameters.Add(new SqlParameter("@itemType", Item.ItemType));
                     cmd.Parameters.Add(new SqlParameter("@runes", Item.Runes));
                     cmd.Parameters.Add(new SqlParameter("@quality", Item.Quality));
+                    cmd.Parameters.Add(new SqlParameter("@rarity", Item.Rarity));
                     cmd.Parameters.Add(new SqlParameter("@lvl", Item.Lvl));
                     cmd.Parameters.Add(new SqlParameter("@str", Item.Str));
                     cmd.Parameters.Add(new SqlParameter("@dex", Item.Dex));
@@ -101,12 +104,14 @@ namespace D2Items.Entity
                 T_ItemMods (
                     modID,
                     itemID,
-                    value
+                    value1,
+                    value2
                 )
                 VALUES (
                     @modID" + count + @",
                     @itemID" + count + @",
-                    @value" + count + @"
+                    @value1" + count + @",
+                    @value2" + count + @"
                 )";
 
                 using (var connection = new SqlConnection(D2ConnectionString))
@@ -116,7 +121,8 @@ namespace D2Items.Entity
                     {
                         cmd.Parameters.Add(new SqlParameter("@itemID" + count, itemID));
                         cmd.Parameters.Add(new SqlParameter("@modID" + count, ItemMod.Mod));
-                        cmd.Parameters.Add(new SqlParameter("@value" + count, ItemMod.ModValue));
+                        cmd.Parameters.Add(new SqlParameter("@value1" + count, ItemMod.ModValue1));
+                        cmd.Parameters.Add(new SqlParameter("@value2" + count, ItemMod.ModValue2));
 
                         ConvertNullsToDBNulls(cmd.Parameters);
                         recordsAffected = cmd.ExecuteNonQuery();

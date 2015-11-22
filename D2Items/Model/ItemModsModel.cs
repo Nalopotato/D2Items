@@ -11,7 +11,8 @@ namespace D2Items.Model
         public int Value { get; set; }
 
         public int Mod { get; set; }
-        public int ModValue { get; set; }
+        public float ModValue1 { get; set; }
+        public float ModValue2 { get; set; }
 
         public override string Label
         {
