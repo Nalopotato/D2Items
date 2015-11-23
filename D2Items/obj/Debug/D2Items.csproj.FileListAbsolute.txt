@@ -1,4 +1,3 @@
-C:\Users\Michael\Documents\Visual Studio 2013\Projects\D2Items\D2Items\obj\Debug\D2Items.csprojResolveAssemblyReference.cache
 C:\Users\Michael\Documents\Visual Studio 2013\Projects\D2Items\D2Items\bin\D2Items.dll
 C:\Users\Michael\Documents\Visual Studio 2013\Projects\D2Items\D2Items\bin\D2Items.pdb
 C:\Users\Michael\Documents\Visual Studio 2013\Projects\D2Items\D2Items\bin\AjaxControlToolkit.dll

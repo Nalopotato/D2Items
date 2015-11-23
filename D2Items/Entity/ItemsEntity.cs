@@ -10,6 +10,12 @@ namespace D2Items.Entity
 {
     public class ItemsEntity : DatabaseEntity<ItemModel>
     {
+        public static List<ItemModel> Get(ItemFetchModel Item)
+        {
+            List<ItemModel> Items = new List<ItemModel>();
+            return Items;
+        }
+
         public static bool Create(ItemModel Item)
         {
             const string query = @"INSERT INTO
@@ -78,7 +84,7 @@ namespace D2Items.Entity
             }
         }
 
-        public static bool CreateMods(ItemModel Item, List<ItemModsModel> ItemMods)
+        public static bool InstertMods(ItemModel Item, List<ItemModsModel> ItemMods)
         {
             int count = 0;
             int recordsAffected = 0;

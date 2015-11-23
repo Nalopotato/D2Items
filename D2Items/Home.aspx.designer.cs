@@ -13,13 +13,13 @@ namespace D2Items {
     public partial class Home {
         
         /// <summary>
-        /// updateLabel1 control.
+        /// clearButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label updateLabel1;
+        protected global::System.Web.UI.WebControls.Button clearButton1;
         
         /// <summary>
         /// nameTB control.
@@ -31,76 +31,130 @@ namespace D2Items {
         protected global::System.Web.UI.WebControls.TextBox nameTB;
         
         /// <summary>
-        /// levelTB control.
+        /// classDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox levelTB;
+        protected global::System.Web.UI.WebControls.DropDownList classDDL;
         
         /// <summary>
-        /// strTB control.
+        /// ladderCB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox strTB;
+        protected global::System.Web.UI.WebControls.CheckBox ladderCB;
         
         /// <summary>
-        /// dexTB control.
+        /// rarityRadioList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dexTB;
+        protected global::System.Web.UI.WebControls.RadioButtonList rarityRadioList;
         
         /// <summary>
-        /// socketsDDL control.
+        /// qualityPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList socketsDDL;
+        protected global::System.Web.UI.WebControls.Panel qualityPanel;
         
         /// <summary>
-        /// baseTypePicker1 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::D2Items.Controls.BaseTypePicker baseTypePicker1;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// baseTypePicker2 control.
+        /// qualityRadioList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::D2Items.Controls.BaseTypePicker baseTypePicker2;
+        protected global::System.Web.UI.WebControls.RadioButtonList qualityRadioList;
         
         /// <summary>
-        /// baseTypePicker3 control.
+        /// minLvlDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::D2Items.Controls.BaseTypePicker baseTypePicker3;
+        protected global::D2Items.Controls.IntRangePicker minLvlDDL;
         
         /// <summary>
-        /// itemTypePicker control.
+        /// maxLvlDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::D2Items.Controls.ItemTypePicker itemTypePicker;
+        protected global::D2Items.Controls.IntRangePicker maxLvlDDL;
+        
+        /// <summary>
+        /// minStrTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox minStrTB;
+        
+        /// <summary>
+        /// maxStrTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox maxStrTB;
+        
+        /// <summary>
+        /// minDexTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox minDexTB;
+        
+        /// <summary>
+        /// maxDexTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox maxDexTB;
+        
+        /// <summary>
+        /// baseTypePicker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::D2Items.Controls.BaseTypePicker baseTypePicker;
+        
+        /// <summary>
+        /// runesPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel runesPanel;
         
         /// <summary>
         /// runePicker1 control.
@@ -139,24 +193,6 @@ namespace D2Items {
         protected global::D2Items.Controls.RunePicker runePicker4;
         
         /// <summary>
-        /// runePicker5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.RunePicker runePicker5;
-        
-        /// <summary>
-        /// runePicker6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.RunePicker runePicker6;
-        
-        /// <summary>
         /// modPicker1 control.
         /// </summary>
         /// <remarks>
@@ -164,24 +200,6 @@ namespace D2Items {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::D2Items.Controls.ModPicker modPicker1;
-        
-        /// <summary>
-        /// modTB1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB1;
-        
-        /// <summary>
-        /// modTB1a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB1a;
         
         /// <summary>
         /// modPicker2 control.
@@ -193,24 +211,6 @@ namespace D2Items {
         protected global::D2Items.Controls.ModPicker modPicker2;
         
         /// <summary>
-        /// modTB2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB2;
-        
-        /// <summary>
-        /// modTB2a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB2a;
-        
-        /// <summary>
         /// modPicker3 control.
         /// </summary>
         /// <remarks>
@@ -218,24 +218,6 @@ namespace D2Items {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::D2Items.Controls.ModPicker modPicker3;
-        
-        /// <summary>
-        /// modTB3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB3;
-        
-        /// <summary>
-        /// modTB3a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB3a;
         
         /// <summary>
         /// modPicker4 control.
@@ -247,411 +229,6 @@ namespace D2Items {
         protected global::D2Items.Controls.ModPicker modPicker4;
         
         /// <summary>
-        /// modTB4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB4;
-        
-        /// <summary>
-        /// modTB4a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB4a;
-        
-        /// <summary>
-        /// modPicker5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker5;
-        
-        /// <summary>
-        /// modTB5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB5;
-        
-        /// <summary>
-        /// modTB5a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB5a;
-        
-        /// <summary>
-        /// modPicker6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker6;
-        
-        /// <summary>
-        /// modTB6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB6;
-        
-        /// <summary>
-        /// modTB6a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB6a;
-        
-        /// <summary>
-        /// modPicker7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker7;
-        
-        /// <summary>
-        /// modTB7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB7;
-        
-        /// <summary>
-        /// modTB7a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB7a;
-        
-        /// <summary>
-        /// modPicker8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker8;
-        
-        /// <summary>
-        /// modTB8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB8;
-        
-        /// <summary>
-        /// modTB8a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB8a;
-        
-        /// <summary>
-        /// modPicker9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker9;
-        
-        /// <summary>
-        /// modTB9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB9;
-        
-        /// <summary>
-        /// modTB9a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB9a;
-        
-        /// <summary>
-        /// modPicker10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker10;
-        
-        /// <summary>
-        /// modTB10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB10;
-        
-        /// <summary>
-        /// modTB10a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB10a;
-        
-        /// <summary>
-        /// modPicker11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker11;
-        
-        /// <summary>
-        /// modTB11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB11;
-        
-        /// <summary>
-        /// modTB11a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB11a;
-        
-        /// <summary>
-        /// modPicker12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker12;
-        
-        /// <summary>
-        /// modTB12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB12;
-        
-        /// <summary>
-        /// modTB12a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB12a;
-        
-        /// <summary>
-        /// modPicker13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker13;
-        
-        /// <summary>
-        /// modTB13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB13;
-        
-        /// <summary>
-        /// modTB13a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB13a;
-        
-        /// <summary>
-        /// modPicker14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker14;
-        
-        /// <summary>
-        /// modTB14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB14;
-        
-        /// <summary>
-        /// modTB14a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB14a;
-        
-        /// <summary>
-        /// modPicker15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker15;
-        
-        /// <summary>
-        /// modTB15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB15;
-        
-        /// <summary>
-        /// modTB15a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB15a;
-        
-        /// <summary>
-        /// modPicker16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::D2Items.Controls.ModPicker modPicker16;
-        
-        /// <summary>
-        /// modTB16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB16;
-        
-        /// <summary>
-        /// modTB16a control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox modTB16a;
-        
-        /// <summary>
-        /// ladderCB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ladderCB;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// versionDDL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList versionDDL;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// classDDL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList classDDL;
-        
-        /// <summary>
-        /// qualityRadioList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList qualityRadioList;
-        
-        /// <summary>
-        /// rarityRadioList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rarityRadioList;
-        
-        /// <summary>
         /// submitButton control.
         /// </summary>
         /// <remarks>
@@ -661,13 +238,22 @@ namespace D2Items {
         protected global::System.Web.UI.WebControls.Button submitButton;
         
         /// <summary>
-        /// updateLabel2 control.
+        /// clearButton2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label updateLabel2;
+        protected global::System.Web.UI.WebControls.Button clearButton2;
+        
+        /// <summary>
+        /// ItemList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ItemList;
         
         /// <summary>
         /// Master property.

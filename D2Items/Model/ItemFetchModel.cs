@@ -5,32 +5,24 @@ using System.Web;
 
 namespace D2Items.Model
 {
-    public class ItemModel : BaseModel
+    public class ItemFetchModel
     {
-        //public int ID { get; set; }
         public string Name { get; set; }
-        public int Lvl { get; set; }
-        public int Str { get; set; }
-        public int Dex { get; set; }
+        public int MinLvl { get; set; }
+        public int MaxLvl { get; set; }
+        public int MinStr { get; set; }
+        public int MaxStr { get; set; }
+        public int MinDex { get; set; }
+        public int MaxDex { get; set; }
         public bool Ladder { get; set; }
         public int Version { get; set; }
         public int Sockets { get; set; }
-        public string BaseType1 { get; set; }
-        public string BaseType2 { get; set; }
-        public string BaseType3 { get; set; }
+        public string BaseType { get; set; }
         public string ItemType { get; set; }
-        public string Runes { get; set; }
         public int Quality { get; set; }
         public int Rarity { get; set; }
         public string Class { get; set; }
         public List<RuneModel> RunesList { get; set; }
-
-        public override string Label
-        {
-            get
-            {
-                return this.Name;
-            }
-        }        
+        public List<ItemModsModel> ModsList { get; set; }
     }
 }

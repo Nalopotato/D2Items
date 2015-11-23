@@ -10,7 +10,6 @@ namespace D2Items.Controls
         where ModelClass : BaseModel, new()
         where EntityClass : DatabaseEntity<ModelClass>, new()
     {
-        protected bool dataKeyDirty = false;
         protected List<ModelClass> collection;
         public bool IncludeInitialItem { get; set; }
         public string InitialText { get; set; }
