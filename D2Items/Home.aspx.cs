@@ -13,7 +13,7 @@ namespace D2Items
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (rarityRadioList.SelectedIndex <= 1)
+            if (rarityRadioList.SelectedIndex == 2)
             {
                 qualityPanel.Visible = true;
                 runesPanel.Visible = true;
@@ -27,26 +27,58 @@ namespace D2Items
 
         protected void submitButton_Click(object sender, EventArgs e)
         {
-            ItemFetchModel Item = new ItemFetchModel();
+            var item = new ItemFetchModel();
+            var rune = new RuneModel();
+            var runes = new List<RuneModel>();
+            var mod = new ItemModsModel();
+            var mods = new List<ItemModsModel>();
 
-            Item.Name = nameTB.Text;
-            Item.MinLvl = minLvlDDL.SelectedIndex;
-            Item.MaxLvl = maxLvlDDL.SelectedIndex;
-            Item.MinStr = Int32.Parse(minStrTB.Text);
-            Item.MaxStr = Int32.Parse(maxStrTB.Text);
+            item.Rune1 = runePicker1.SelectedValue;
+            item.Rune2 = runePicker2.SelectedValue;
+            item.Rune3 = runePicker3.SelectedValue;
+            item.Rune4 = runePicker4.SelectedValue;
+
+            mod.ModID = modPicker1.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
+            mod.ModID = modPicker2.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
+            mod.ModID = modPicker3.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
+            mod.ModID = modPicker4.SelectedIndex; mods.Add(mod);
+
+            item.ModsList = mods;
+
+            item.Name = nameTB.Text;
+            item.MinLvl = minLvlDDL.SelectedIndex;
+            item.MaxLvl = maxLvlDDL.SelectedIndex;
+            if (minStrTB.Text != "") { item.MinStr = Int32.Parse(minStrTB.Text); } else { item.MinStr = 0; }
+            if (maxStrTB.Text != "") { item.MaxStr = Int32.Parse(maxStrTB.Text); } else { item.MaxStr = 999; }
+            if (minDexTB.Text != "") { item.MinDex = Int32.Parse(minDexTB.Text); } else { item.MinDex = 0; }
+            if (maxStrTB.Text != "") { item.MaxDex = Int32.Parse(maxDexTB.Text); } else { item.MaxDex = 999; }
+            if (baseTypePicker.SelectedIndex > 0) { item.BaseType = baseTypePicker.SelectedText; }
+            if (classDDL.SelectedIndex > 0) { item.Class = classDDL.SelectedValue; }
+            item.Ladder = ladderCB.Checked;
+            item.Rarity = Int32.Parse(rarityRadioList.SelectedValue);
+            item.Quality = Int32.Parse(qualityRadioList.SelectedValue);
             
-            List<ItemModel> Items = ItemsEntity.Get(Item);
+            List<ItemModel> Items = ItemsEntity.Get(item);
 
             ItemList.DataSource = Items.Select(im => new ItemModel
             {
                 ID = im.ID,
                 Name = im.Name,
+                BaseType1 = im.BaseType1,
+                Rune1 = im.Rune1,
+                Rune2 = im.Rune2,
+                Rune3 = im.Rune3,
+                Rune4 = im.Rune4,
+                Rune5 = im.Rune5,
+                Rune6 = im.Rune6,
                 Lvl = im.Lvl,
                 Str = im.Str,
                 Dex = im.Dex,
-                BaseType1 = im.BaseType1,
-                RunesList = im.RunesList
+                Ladder = im.Ladder,
+                Class = im.Class                
             }).ToList();
+
+            DataBind();
         }
 
         protected void clearButton_Click(object sender, EventArgs e)

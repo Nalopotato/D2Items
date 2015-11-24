@@ -41,44 +41,49 @@ namespace D2Items
 
                 Item.ItemType = itemTypePicker.SelectedText;
                 if (classDDL.SelectedIndex != 0) { Item.Class = classDDL.Text; }
-                Item.Runes = "a" + runePicker1.SelectedValue + "a" + runePicker2.SelectedValue + "a" + runePicker3.SelectedValue + "a" + runePicker4.SelectedValue + "a" + runePicker5.SelectedValue + "a" + runePicker6.SelectedValue + "a";
+                if (runePicker1.SelectedIndex > 0) { Item.Rune1 = runePicker1.SelectedText; }
+                if (runePicker2.SelectedIndex > 0) { Item.Rune2 = runePicker2.SelectedText; }
+                if (runePicker3.SelectedIndex > 0) { Item.Rune3 = runePicker3.SelectedText; }
+                if (runePicker4.SelectedIndex > 0) { Item.Rune4 = runePicker4.SelectedText; }
+                if (runePicker5.SelectedIndex > 0) { Item.Rune5 = runePicker5.SelectedText; }
+                if (runePicker6.SelectedIndex > 0) { Item.Rune6 = runePicker6.SelectedText; }
                 Item.Quality = Int32.Parse(qualityRadioList.SelectedItem.Value);
                 Item.Rarity = Int32.Parse(rarityRadioList.SelectedItem.Value);
 
                 var ItemMod = new ItemModsModel();
                 var ItemMods = new List<ItemModsModel>();
 
-                if (modPicker1.Text != "0" && modTB1.Text != "") { ItemMod.Mod = Int32.Parse(modPicker1.Text); ItemMod.ModValue1 = float.Parse(modTB1.Text); if (modTB1a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB1a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker1.Text != "0" && modTB1.Text != "") { ItemMod.ModID = Int32.Parse(modPicker1.Text); ItemMod.ModValue1 = float.Parse(modTB1.Text); if (modTB1a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB1a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker2.Text != "0" && modTB2.Text != "") { ItemMod.Mod = Int32.Parse(modPicker2.Text); ItemMod.ModValue1 = float.Parse(modTB2.Text); if (modTB2a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB2a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker2.Text != "0" && modTB2.Text != "") { ItemMod.ModID = Int32.Parse(modPicker2.Text); ItemMod.ModValue1 = float.Parse(modTB2.Text); if (modTB2a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB2a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker3.Text != "0" && modTB3.Text != "") { ItemMod.Mod = Int32.Parse(modPicker3.Text); ItemMod.ModValue1 = float.Parse(modTB3.Text); if (modTB3a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB3a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker3.Text != "0" && modTB3.Text != "") { ItemMod.ModID = Int32.Parse(modPicker3.Text); ItemMod.ModValue1 = float.Parse(modTB3.Text); if (modTB3a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB3a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker4.Text != "0" && modTB4.Text != "") { ItemMod.Mod = Int32.Parse(modPicker4.Text); ItemMod.ModValue1 = float.Parse(modTB4.Text); if (modTB4a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB4a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker4.Text != "0" && modTB4.Text != "") { ItemMod.ModID = Int32.Parse(modPicker4.Text); ItemMod.ModValue1 = float.Parse(modTB4.Text); if (modTB4a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB4a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker5.Text != "0" && modTB5.Text != "") { ItemMod.Mod = Int32.Parse(modPicker5.Text); ItemMod.ModValue1 = float.Parse(modTB5.Text); if (modTB5a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB5a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker5.Text != "0" && modTB5.Text != "") { ItemMod.ModID = Int32.Parse(modPicker5.Text); ItemMod.ModValue1 = float.Parse(modTB5.Text); if (modTB5a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB5a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker6.Text != "0" && modTB6.Text != "") { ItemMod.Mod = Int32.Parse(modPicker6.Text); ItemMod.ModValue1 = float.Parse(modTB6.Text); if (modTB6a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB6a.Text); }  ItemMods.Add(ItemMod); }
+                if (modPicker6.Text != "0" && modTB6.Text != "") { ItemMod.ModID = Int32.Parse(modPicker6.Text); ItemMod.ModValue1 = float.Parse(modTB6.Text); if (modTB6a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB6a.Text); }  ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker7.Text != "0" && modTB7.Text != "") { ItemMod.Mod = Int32.Parse(modPicker7.Text); ItemMod.ModValue1 = float.Parse(modTB7.Text); if (modTB7a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB7a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker7.Text != "0" && modTB7.Text != "") { ItemMod.ModID = Int32.Parse(modPicker7.Text); ItemMod.ModValue1 = float.Parse(modTB7.Text); if (modTB7a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB7a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker8.Text != "0" && modTB8.Text != "") { ItemMod.Mod = Int32.Parse(modPicker8.Text); ItemMod.ModValue1 = float.Parse(modTB8.Text); if (modTB8a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB8a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker8.Text != "0" && modTB8.Text != "") { ItemMod.ModID = Int32.Parse(modPicker8.Text); ItemMod.ModValue1 = float.Parse(modTB8.Text); if (modTB8a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB8a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker9.Text != "0" && modTB9.Text != "") { ItemMod.Mod = Int32.Parse(modPicker9.Text); ItemMod.ModValue1 = float.Parse(modTB9.Text); if (modTB9a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB9a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker9.Text != "0" && modTB9.Text != "") { ItemMod.ModID = Int32.Parse(modPicker9.Text); ItemMod.ModValue1 = float.Parse(modTB9.Text); if (modTB9a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB9a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker10.Text != "0" && modTB10.Text != "") { ItemMod.Mod = Int32.Parse(modPicker10.Text); ItemMod.ModValue1 = float.Parse(modTB10.Text); if (modTB10a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB10a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker10.Text != "0" && modTB10.Text != "") { ItemMod.ModID = Int32.Parse(modPicker10.Text); ItemMod.ModValue1 = float.Parse(modTB10.Text); if (modTB10a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB10a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker11.Text != "0" && modTB11.Text != "") { ItemMod.Mod = Int32.Parse(modPicker11.Text); ItemMod.ModValue1 = float.Parse(modTB11.Text); if (modTB11a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB11a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker11.Text != "0" && modTB11.Text != "") { ItemMod.ModID = Int32.Parse(modPicker11.Text); ItemMod.ModValue1 = float.Parse(modTB11.Text); if (modTB11a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB11a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker12.Text != "0" && modTB12.Text != "") { ItemMod.Mod = Int32.Parse(modPicker12.Text); ItemMod.ModValue1 = float.Parse(modTB12.Text); if (modTB12a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB12a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker12.Text != "0" && modTB12.Text != "") { ItemMod.ModID = Int32.Parse(modPicker12.Text); ItemMod.ModValue1 = float.Parse(modTB12.Text); if (modTB12a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB12a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker13.Text != "0" && modTB13.Text != "") { ItemMod.Mod = Int32.Parse(modPicker13.Text); ItemMod.ModValue1 = float.Parse(modTB13.Text); if (modTB13a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB13a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker13.Text != "0" && modTB13.Text != "") { ItemMod.ModID = Int32.Parse(modPicker13.Text); ItemMod.ModValue1 = float.Parse(modTB13.Text); if (modTB13a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB13a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker14.Text != "0" && modTB14.Text != "") { ItemMod.Mod = Int32.Parse(modPicker14.Text); ItemMod.ModValue1 = float.Parse(modTB14.Text); if (modTB14a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB14a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker14.Text != "0" && modTB14.Text != "") { ItemMod.ModID = Int32.Parse(modPicker14.Text); ItemMod.ModValue1 = float.Parse(modTB14.Text); if (modTB14a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB14a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker15.Text != "0" && modTB15.Text != "") { ItemMod.Mod = Int32.Parse(modPicker15.Text); ItemMod.ModValue1 = float.Parse(modTB15.Text); if (modTB15a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB15a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker15.Text != "0" && modTB15.Text != "") { ItemMod.ModID = Int32.Parse(modPicker15.Text); ItemMod.ModValue1 = float.Parse(modTB15.Text); if (modTB15a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB15a.Text); } ItemMods.Add(ItemMod); }
                 ItemMod = new ItemModsModel();
-                if (modPicker16.Text != "0" && modTB16.Text != "") { ItemMod.Mod = Int32.Parse(modPicker16.Text); ItemMod.ModValue1 = float.Parse(modTB16.Text); if (modTB16a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB16a.Text); } ItemMods.Add(ItemMod); }
+                if (modPicker16.Text != "0" && modTB16.Text != "") { ItemMod.ModID = Int32.Parse(modPicker16.Text); ItemMod.ModValue1 = float.Parse(modTB16.Text); if (modTB16a.Text != "") { ItemMod.ModValue2 = float.Parse(modTB16a.Text); } ItemMods.Add(ItemMod); }
 
                 if (ItemsEntity.Create(Item) && ItemsEntity.InstertMods(Item, ItemMods)) {
                     updateLabel1.Text = Item.Name + " has been added to the database";

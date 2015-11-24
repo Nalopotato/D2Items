@@ -8,9 +8,8 @@ namespace D2Items.Model
     public class ItemModsModel : BaseModel
     {
         public string Name { get; set; }
-        public int Value { get; set; }
 
-        public int Mod { get; set; }
+        public int ModID { get; set; }
         public float ModValue1 { get; set; }
         public float ModValue2 { get; set; }
 

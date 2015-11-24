@@ -22,7 +22,10 @@ namespace D2Items.Model
         public int Quality { get; set; }
         public int Rarity { get; set; }
         public string Class { get; set; }
-        public List<RuneModel> RunesList { get; set; }
+        public string Rune1 { get; set; }
+        public string Rune2 { get; set; }
+        public string Rune3 { get; set; }
+        public string Rune4 { get; set; }
         public List<ItemModsModel> ModsList { get; set; }
     }
 }

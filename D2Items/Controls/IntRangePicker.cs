@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
 namespace D2Items.Controls
@@ -7,17 +8,17 @@ namespace D2Items.Controls
     {
         public int Max { get; set; }
 
-        protected override void OnInit(EventArgs e)
+        protected override void OnPreRender(EventArgs e)
         {
-            base.OnInit(e);
+            base.OnPreRender(e);
             Populate();
         }
 
         private void Populate()
         {
-            this.Items.Add(new ListItem("Select", "0"));
+            //this.Items.Add(new ListItem("Select", "0"));
 
-            for (int i = 1; i <= Max; i++)
+            for (int i = 0; i <= Max; i++)
             {
                 this.Items.Add(new ListItem(i.ToString()));
             }

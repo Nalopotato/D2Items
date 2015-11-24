@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/D2.master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="D2Items.Home" %>
 <%@ MasterType VirtualPath="~/D2.master" %>
+<%@ Import Namespace="System.Data" %>
 
 <asp:Content runat="server" ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder">
     <asp:Button runat="server" ID="clearButton1" Text="Clear Fields" OnClick="clearButton_Click" />
@@ -22,9 +23,9 @@
 
         <asp:Label runat="server" Text="Rarity" /><br />
         <asp:RadioButtonList runat="server" ID="rarityRadioList" AutoPostBack="true">
-            <asp:ListItem Text="Unique" Value="0" style="color:orange;"></asp:ListItem>
-            <asp:ListItem Text="Set" Value="1" style="color:green;"></asp:ListItem>
-            <asp:ListItem Text="Runeword" Value="2" Selected="True" style="color:orange;"></asp:ListItem>
+            <asp:ListItem Text="Unique" Value="3" style="color:orange;"></asp:ListItem>
+            <asp:ListItem Text="Set" Value="4" style="color:green;"></asp:ListItem>
+            <asp:ListItem Text="Runeword" Value="5" Selected="True" style="color:orange;"></asp:ListItem>
         </asp:RadioButtonList><br />
 
         <asp:Panel runat="server" ID="qualityPanel" Visible="false" >
@@ -37,8 +38,8 @@
         </asp:Panel>
 
         <asp:Label runat="server" Text="Level Range" /><br />
-        <uc:IntRangePicker ID="minLvlDDL" runat="server" Max="99" Width="75" />
-        <uc:IntRangePicker ID="maxLvlDDL" runat="server" Max="99" Width="75" /><br />
+        <UC:IntRangePicker ID="minLvlDDL" runat="server" Max="99" Width="75" />
+        <UC:IntRangePicker ID="maxLvlDDL" runat="server" Max="99" Width="75" SelectedText="99" /><br />
 
         <asp:Label runat="server" Text="Strength Range" /><br />
         <asp:TextBox ID="minStrTB" runat="server" Width="75" MaxLength="3" />
@@ -89,15 +90,23 @@
             </LayoutTemplate>
     
             <ItemTemplate>
-                <asp:HiddenField ID="itemID" runat="server" Value="<%# Container.DataItem.ID %>" />
-
                 <div id="Div1" runat="server" class="inner-block" style="overflow: auto; overflow-y: hidden; max-width: 1400px;">
-                    <asp:Label ID="Label2" runat="server" Text='<%# Container.DataItem.Name %>'></asp:Label>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Container.DataItem.Lvl %>'></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType1") %>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label9" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Rune1") + " " + DataBinder.Eval(Container.DataItem, "Rune2") + " " + DataBinder.Eval(Container.DataItem, "Rune3") + " " + DataBinder.Eval(Container.DataItem, "Rune4") + " " + DataBinder.Eval(Container.DataItem, "Rune5") + " " + DataBinder.Eval(Container.DataItem, "Rune6")  %>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Lvl") %>'></asp:Label>
                     <br/>
-                    <asp:Label ID="Label4" runat="server" Text='<%# Container.DataItem.Str %>'></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Str") %>'></asp:Label>
                     <br/>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Container.DataItem.Dex %>'></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Dex") %>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label7" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Ladder") %>'></asp:Label>
+                    <br />
+                    <asp:Label ID="Label6" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Class") %>'></asp:Label>
+                    <br />
                 </div>
             </ItemTemplate>
             <EmptyDataTemplate>
