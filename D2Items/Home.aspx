@@ -37,21 +37,20 @@
             </asp:RadioButtonList><br />
         </asp:Panel>
 
+        <asp:Label runat="server" Text="Sockets" /><br />
+        <UC:IntRangePicker ID="socketsDDL" runat="server" Max="6" Width="75" /><br />
+
         <asp:Label runat="server" Text="Level Range" /><br />
         <UC:IntRangePicker ID="minLvlDDL" runat="server" Max="99" Width="75" />
         <UC:IntRangePicker ID="maxLvlDDL" runat="server" Max="99" Width="75" /><br />
 
         <asp:Label runat="server" Text="Strength Range" /><br />
-        <asp:TextBox ID="minStrTB" runat="server" Width="75" MaxLength="3" Placeholder="0" />
-        <asp:TextBox ID="maxStrTB" runat="server" Width="75" MaxLength="3" Placeholder="999" />
-        <asp:CompareValidator ControlToValidate="minStrTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator>
-        <asp:CompareValidator ControlToValidate="maxStrTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator><br />
+        <asp:TextBox ID="minStrTB" runat="server" Width="75" MaxLength="3" Placeholder="0" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32);" />
+        <asp:TextBox ID="maxStrTB" runat="server" Width="75" MaxLength="3" Placeholder="999" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32);" /><br />
 
         <asp:Label runat="server" Text="Dexterity Range" /><br />
-        <asp:TextBox ID="minDexTB" runat="server" Width="75" MaxLength="3" Placeholder="0" />
-        <asp:TextBox ID="maxDexTB" runat="server" Width="75" MaxLength="3" Placeholder="999" />
-        <asp:CompareValidator ControlToValidate="minDexTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator>
-        <asp:CompareValidator ControlToValidate="maxDexTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator><br />
+        <asp:TextBox ID="minDexTB" runat="server" Width="75" MaxLength="3" Placeholder="0" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32);" />
+        <asp:TextBox ID="maxDexTB" runat="server" Width="75" MaxLength="3" Placeholder="999" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32);" /><br />
 
         <asp:Label runat="server" Text="Base Type" Width="20%" /><br />
         <UC:BaseTypePicker ID="baseTypePicker" runat="server" InitialValue="0" InitialText="Select" IncludeInitialItem="true" />
@@ -98,17 +97,19 @@
                     <asp:Label ID="Label8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType1") %>'></asp:Label>
                     <asp:Label ID="Label10" runat="server" Text='<%# " or " + DataBinder.Eval(Container.DataItem, "BaseType2") %>' 
                         Visible='<%# DataBinder.Eval(Container.DataItem, "BaseType2") != null %>'></asp:Label>
+                    <asp:Label ID="Label11" runat="server" Text='<%# " or " + DataBinder.Eval(Container.DataItem, "BaseType3") %>' 
+                        Visible='<%# DataBinder.Eval(Container.DataItem, "BaseType3") != null %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label9" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Rune1") + " " + DataBinder.Eval(Container.DataItem, "Rune2") + " " + DataBinder.Eval(Container.DataItem, "Rune3") + " " + DataBinder.Eval(Container.DataItem, "Rune4") + " " + DataBinder.Eval(Container.DataItem, "Rune5") + " " + DataBinder.Eval(Container.DataItem, "Rune6")  %>'></asp:Label>
                     <br />
-                    <asp:Label ID="Label3" runat="server" Text='<%# "Level: " + DataBinder.Eval(Container.DataItem, "Lvl") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" ForeColor="DarkRed" Text='<%# "Level: " + DataBinder.Eval(Container.DataItem, "Lvl") %>'></asp:Label>
                     <br/>
                     <asp:Label ID="Label4" runat="server" Text='<%# "Str: " + DataBinder.Eval(Container.DataItem, "Str") %>'></asp:Label>
                     <br/>
                     <asp:Label ID="Label5" runat="server" Text='<%# "Dex: " + DataBinder.Eval(Container.DataItem, "Dex") %>'></asp:Label>
                     <br />
                     <asp:Panel runat="server" Visible='<%# DataBinder.Eval(Container.DataItem, "Ladder") %>'>
-                        <asp:Label ID="Label7" runat="server" Text="Ladder Only" ForeColor="DarkRed" Font-Bold="true"></asp:Label>
+                        <asp:Label ID="Label7" runat="server" Text="Ladder Only" ForeColor="DarkOrange" Font-Bold="true"></asp:Label>
                         <br />
                     </asp:Panel>
                     <asp:Panel runat="server" Visible='<%# DataBinder.Eval(Container.DataItem, "Class") != null %>'>

@@ -85,6 +85,15 @@ namespace D2Items {
         protected global::System.Web.UI.WebControls.RadioButtonList qualityRadioList;
         
         /// <summary>
+        /// socketsDDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::D2Items.Controls.IntRangePicker socketsDDL;
+        
+        /// <summary>
         /// minLvlDDL control.
         /// </summary>
         /// <remarks>

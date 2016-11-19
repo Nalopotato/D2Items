@@ -51,6 +51,7 @@ namespace D2Items
             item.ModsList = mods;
 
             item.Name = nameTB.Text;
+            item.Sockets = socketsDDL.SelectedIndex;
             item.MinLvl = minLvlDDL.SelectedIndex;
             if (maxLvlDDL.SelectedIndex != 0) { item.MaxLvl = maxLvlDDL.SelectedIndex; } else { item.MaxLvl = 99; }
 
@@ -72,6 +73,7 @@ namespace D2Items
                 Name = im.Name,
                 BaseType1 = im.BaseType1,
                 BaseType2 = im.BaseType2,
+                BaseType3 = im.BaseType3,
                 Rune1 = im.Rune1,
                 Rune2 = im.Rune2,
                 Rune3 = im.Rune3,

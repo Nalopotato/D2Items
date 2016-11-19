@@ -18,6 +18,7 @@ namespace D2Items.Entity
     name,
     baseType1,
     baseType2,
+    baseType3,
     rune1,
     rune2,
     rune3,
@@ -27,6 +28,7 @@ namespace D2Items.Entity
     lvl,
     str,
     dex,
+    sockets,
     ladder,
     class
 FROM 
@@ -37,6 +39,7 @@ WHERE
     {2}
     {3}
     {4}
+    {5}
     lvl >= @minLvl AND
     lvl <= @maxLvl AND
     str >= @minStr AND
@@ -45,7 +48,7 @@ WHERE
     dex <= @maxDex AND
     rarity = @rarity
 ORDER BY
-    lvl";
+    lvl DESC";
 
             var cmd = new SqlCommand { Connection = new SqlConnection(D2ConnectionString) };
 
@@ -54,6 +57,7 @@ ORDER BY
             string classFilter = "";
             string runeFilter = "";
             string ladderFilter = "";
+            string socketsFilter = "";
 
             if (Item.Name != "")
             {
@@ -63,7 +67,7 @@ ORDER BY
 
             if (Item.BaseType != null)
             {
-                baseTypeFilter = "(baseType1 LIKE '%@baseType%' OR baseType2 LIKE '%@baseType%') AND";
+                baseTypeFilter = "(baseType1 LIKE '%'+@baseType+'%' OR baseType2 LIKE '%'+@baseType+'%' OR baseType3 LIKE '%'+@baseType+'%') AND";
                 cmd.Parameters.Add(new SqlParameter("@baseType", Item.BaseType));
             }
 
@@ -97,6 +101,12 @@ ORDER BY
 
             if (Item.Ladder == true) { ladderFilter = "ladder = 'true' AND"; }
 
+            if (Item.Sockets > 0)
+            {
+                socketsFilter = "sockets = @sockets AND";
+                cmd.Parameters.Add(new SqlParameter("@sockets", Item.Sockets));
+            }
+
             cmd.Parameters.Add(new SqlParameter("@minLvl", Item.MinLvl));
             cmd.Parameters.Add(new SqlParameter("@maxLvl", Item.MaxLvl));
             cmd.Parameters.Add(new SqlParameter("@minStr", Item.MinStr));
@@ -106,7 +116,7 @@ ORDER BY
             cmd.Parameters.Add(new SqlParameter("@rarity", Item.Rarity));
             //cmd.Parameters.Add(new SqlParameter("@quality", Item.Quality));
 
-            query = String.Format(query, nameFilter, baseTypeFilter, classFilter, runeFilter, ladderFilter);
+            query = String.Format(query, nameFilter, baseTypeFilter, classFilter, runeFilter, ladderFilter, socketsFilter);
 
             cmd.CommandText = query;
             cmd.Connection.Open();
@@ -122,17 +132,19 @@ ORDER BY
                     if (!reader.IsDBNull(1)) item.Name = reader.GetString(1);
                     if (!reader.IsDBNull(2)) item.BaseType1 = reader.GetString(2);
                     if (!reader.IsDBNull(3)) item.BaseType2 = reader.GetString(3);
-                    if (!reader.IsDBNull(4)) item.Rune1 = reader.GetString(4);
-                    if (!reader.IsDBNull(5)) item.Rune2 = reader.GetString(5);
-                    if (!reader.IsDBNull(6)) item.Rune3 = reader.GetString(6);
-                    if (!reader.IsDBNull(7)) item.Rune4 = reader.GetString(7);
-                    if (!reader.IsDBNull(8)) item.Rune5 = reader.GetString(8);
-                    if (!reader.IsDBNull(9)) item.Rune6 = reader.GetString(9);
-                    if (!reader.IsDBNull(10)) item.Lvl = reader.GetInt32(10);
-                    if (!reader.IsDBNull(11)) item.Str = reader.GetInt32(11);
-                    if (!reader.IsDBNull(12)) item.Dex = reader.GetInt32(12);
-                    if (!reader.IsDBNull(13)) item.Ladder = reader.GetBoolean(13);
-                    if (!reader.IsDBNull(14)) item.Class = reader.GetString(14);
+                    if (!reader.IsDBNull(4)) item.BaseType3 = reader.GetString(4);
+                    if (!reader.IsDBNull(5)) item.Rune1 = reader.GetString(5);
+                    if (!reader.IsDBNull(6)) item.Rune2 = reader.GetString(6);
+                    if (!reader.IsDBNull(7)) item.Rune3 = reader.GetString(7);
+                    if (!reader.IsDBNull(8)) item.Rune4 = reader.GetString(8);
+                    if (!reader.IsDBNull(9)) item.Rune5 = reader.GetString(9);
+                    if (!reader.IsDBNull(10)) item.Rune6 = reader.GetString(10);
+                    if (!reader.IsDBNull(11)) item.Lvl = reader.GetInt32(11);
+                    if (!reader.IsDBNull(12)) item.Str = reader.GetInt32(12);
+                    if (!reader.IsDBNull(13)) item.Dex = reader.GetInt32(13);
+                    if (!reader.IsDBNull(14)) item.Sockets = reader.GetInt32(14);
+                    if (!reader.IsDBNull(15)) item.Ladder = reader.GetBoolean(15);
+                    if (!reader.IsDBNull(16)) item.Class = reader.GetString(16);
                     items.Add(item);
                 }
                 cmd.Connection.Close();
