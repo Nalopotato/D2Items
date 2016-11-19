@@ -5,6 +5,7 @@
 <asp:Content runat="server" ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder">
     <asp:Button runat="server" ID="clearButton1" Text="Clear Fields" OnClick="clearButton_Click" />
     <div class="content-block">
+        <div class="span4">
         <asp:TextBox ID="nameTB" runat="server" Placeholder="Name" /><br />
 
         <asp:DropDownList runat="server" ID="classDDL">
@@ -54,7 +55,7 @@
 
         <asp:Label runat="server" Text="Base Type" Width="20%" /><br />
         <UC:BaseTypePicker ID="baseTypePicker" runat="server" InitialValue="0" InitialText="Select" IncludeInitialItem="true" />
-
+    </div>
         <asp:Panel runat="server" ID="runesPanel">
             <div class="row-fluid"><hr class="span12" /></div>
 
@@ -72,11 +73,11 @@
         <UC:ModPicker runat="server" ID="modPicker2" InitialText="None" IncludeInitialItem="true" InitialValue="0" /><br />
         <UC:ModPicker runat="server" ID="modPicker3" InitialText="None" IncludeInitialItem="true" InitialValue="0" /><br />
         <UC:ModPicker runat="server" ID="modPicker4" InitialText="None" IncludeInitialItem="true" InitialValue="0" /><br />
-
+    
         <asp:Button runat="server" ID="submitButton" Text="Submit" OnClick="submitButton_Click" />
         <asp:Button runat="server" ID="clearButton2" Text="Clear Fields" OnClick="clearButton_Click" /><br />
         <br />
-
+    <div class="span6">
         <asp:ListView runat="server" ID="ItemList" OnPagePropertiesChanging="ItemList_PagePropertiesChanging">
 
             <LayoutTemplate>
@@ -91,7 +92,7 @@
     
             <ItemTemplate>
                 <div id="Div1" runat="server" class="inner-block" style="overflow: auto; overflow-y: hidden; max-width: 1400px; margin: 4px 0px 5px 3px;">
-                    <div class="span12" style="border-bottom: 1px solid #d2e6fc;"></div>
+                    <div class="span6" style="border-bottom: 1px solid #d2e6fc;"></div>
                     <asp:Label ID="Label2" runat="server" CssClass="d2font" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType1") %>'></asp:Label>
@@ -100,14 +101,15 @@
                     <asp:Label ID="Label11" runat="server" Text='<%# " or " + DataBinder.Eval(Container.DataItem, "BaseType3") %>' 
                         Visible='<%# DataBinder.Eval(Container.DataItem, "BaseType3") != null %>'></asp:Label>
                     <br />
-                    <asp:Label ID="Label9" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Rune1") + " " + DataBinder.Eval(Container.DataItem, "Rune2") + " " + DataBinder.Eval(Container.DataItem, "Rune3") + " " + DataBinder.Eval(Container.DataItem, "Rune4") + " " + DataBinder.Eval(Container.DataItem, "Rune5") + " " + DataBinder.Eval(Container.DataItem, "Rune6")  %>'></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Rune1") + " " + DataBinder.Eval(Container.DataItem, "Rune2") + " " + DataBinder.Eval(Container.DataItem, "Rune3") + " " + 
+                            DataBinder.Eval(Container.DataItem, "Rune4") + " " + DataBinder.Eval(Container.DataItem, "Rune5") + " " + DataBinder.Eval(Container.DataItem, "Rune6")  %>' ForeColor="DarkViolet"></asp:Label>
                     <br />
-                    <asp:Label ID="Label3" runat="server" ForeColor="DarkRed" Text='<%# "Level: " + DataBinder.Eval(Container.DataItem, "Lvl") %>'></asp:Label>
-                    <br/>
                     <asp:Label ID="Label4" runat="server" Text='<%# "Str: " + DataBinder.Eval(Container.DataItem, "Str") %>'></asp:Label>
                     <br/>
                     <asp:Label ID="Label5" runat="server" Text='<%# "Dex: " + DataBinder.Eval(Container.DataItem, "Dex") %>'></asp:Label>
                     <br />
+                    <asp:Label ID="Label3" runat="server" Text='<%# "Level: " + DataBinder.Eval(Container.DataItem, "Lvl") %>' ForeColor="DarkRed" Font-Bold="true"></asp:Label>
+                    <br/>
                     <asp:Panel runat="server" Visible='<%# DataBinder.Eval(Container.DataItem, "Ladder") %>'>
                         <asp:Label ID="Label7" runat="server" Text="Ladder Only" ForeColor="DarkOrange" Font-Bold="true"></asp:Label>
                         <br />
@@ -121,5 +123,6 @@
                 There are no items with these filters
             </EmptyDataTemplate>
         </asp:ListView>
+        </div>
     </div>
 </asp:Content>

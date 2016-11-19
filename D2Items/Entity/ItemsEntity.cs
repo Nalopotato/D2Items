@@ -72,11 +72,11 @@ ORDER BY
             {
                 if (Item.BaseType == "Weapons")
                 {
-                    baseTypeFilter = "bt.name = 'Weapons' OR bt.isMelee = 1 OR bt.name LIKE '%Missile%'";
+                    baseTypeFilter = "(bt.name = 'Weapons' OR bt.isMelee = 1 OR bt.name LIKE '%Missile%') AND";
                 }
                 else if (Item.BaseType == "Melee Weapons")
                 {
-                    baseTypeFilter = "bt.name = 'Weapons' OR bt.isMelee = 1";
+                    baseTypeFilter = "(bt.name = 'Weapons' OR bt.isMelee = 1) AND";
                 }
                 else
                 {
