@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using D2Items.Model;
-using D2Items.Entity;
 
 namespace D2Items.Entity
 {

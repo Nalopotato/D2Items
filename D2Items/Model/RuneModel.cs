@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace D2Items.Model
+﻿namespace D2Items.Model
 {
     public class RuneModel : BaseModel
     {

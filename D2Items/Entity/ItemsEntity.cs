@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
 using D2Items.Model;
-using D2Items.Entity;
 
 namespace D2Items.Entity
 {
@@ -19,6 +17,7 @@ namespace D2Items.Entity
     ID,
     name,
     baseType1,
+    baseType2,
     rune1,
     rune2,
     rune3,
@@ -28,26 +27,33 @@ namespace D2Items.Entity
     lvl,
     str,
     dex,
+    ladder,
     class
 FROM 
     T_Items
 WHERE 
     {0}
+    {1}
+    {2}
+    {3}
+    {4}
     lvl >= @minLvl AND
-    lvl <= @maxLVL AND
+    lvl <= @maxLvl AND
     str >= @minStr AND
     str <= @maxStr AND
     dex >= @minDex AND
     dex <= @maxDex AND
-    {1}
-    {2}
-    rarity = @rarity";
+    rarity = @rarity
+ORDER BY
+    lvl";
 
             var cmd = new SqlCommand { Connection = new SqlConnection(D2ConnectionString) };
 
             string nameFilter = "";
             string baseTypeFilter = "";
             string classFilter = "";
+            string runeFilter = "";
+            string ladderFilter = "";
 
             if (Item.Name != "")
             {
@@ -57,7 +63,7 @@ WHERE
 
             if (Item.BaseType != null)
             {
-                baseTypeFilter = "baseType1 LIKE '%@baseType%' AND";
+                baseTypeFilter = "(baseType1 LIKE '%@baseType%' OR baseType2 LIKE '%@baseType%') AND";
                 cmd.Parameters.Add(new SqlParameter("@baseType", Item.BaseType));
             }
 
@@ -67,23 +73,39 @@ WHERE
                 cmd.Parameters.Add(new SqlParameter("@class", Item.Class));
             }
 
+            if (Item.Rune1 != null)
+            {
+                runeFilter += "(rune1 = @rune1 OR rune2 = @rune1 OR rune3 = @rune1 OR rune4 = @rune1 OR rune5 = @rune1 OR rune6 = @rune1) AND";
+                cmd.Parameters.Add(new SqlParameter("@rune1", Item.Rune1));
+            }
+            if (Item.Rune2 != null)
+            {
+                runeFilter += "(rune1 = @rune2 OR rune2 = @rune2 OR rune3 = @rune2 OR rune4 = @rune2 OR rune5 = @rune2 OR rune6 = @rune2) AND";
+                cmd.Parameters.Add(new SqlParameter("@rune2", Item.Rune1));
+            }
+            if (Item.Rune3 != null)
+            {
+                runeFilter += "(rune1 = @rune3 OR rune2 = @rune3 OR rune3 = @rune3 OR rune4 = @rune3 OR rune5 = @rune3 OR rune6 = @rune3) AND";
+                cmd.Parameters.Add(new SqlParameter("@rune3", Item.Rune1));
+            }
+            if (Item.Rune4 != null)
+            {
+                runeFilter += "(rune1 = @rune4 OR rune2 = @rune4 OR rune3 = @rune4 OR rune4 = @rune4 OR rune5 = @rune4 OR rune6 = @rune4) AND";
+                cmd.Parameters.Add(new SqlParameter("@rune4", Item.Rune1));
+            }
+
+            if (Item.Ladder == true) { ladderFilter = "ladder = 'true' AND"; }
+
             cmd.Parameters.Add(new SqlParameter("@minLvl", Item.MinLvl));
             cmd.Parameters.Add(new SqlParameter("@maxLvl", Item.MaxLvl));
             cmd.Parameters.Add(new SqlParameter("@minStr", Item.MinStr));
             cmd.Parameters.Add(new SqlParameter("@maxStr", Item.MaxStr));
             cmd.Parameters.Add(new SqlParameter("@minDex", Item.MinDex));
             cmd.Parameters.Add(new SqlParameter("@maxDex", Item.MaxDex));
-
-            cmd.Parameters.Add(new SqlParameter("@rune1", Item.Rune1));
-            cmd.Parameters.Add(new SqlParameter("@rune2", Item.Rune2));
-            cmd.Parameters.Add(new SqlParameter("@rune3", Item.Rune3));
-            cmd.Parameters.Add(new SqlParameter("@rune4", Item.Rune4));
-
-            //cmd.Parameters.Add(new SqlParameter("@ladder", Item.Ladder));
             cmd.Parameters.Add(new SqlParameter("@rarity", Item.Rarity));
             //cmd.Parameters.Add(new SqlParameter("@quality", Item.Quality));
 
-            query = String.Format(query, nameFilter, baseTypeFilter, classFilter);
+            query = String.Format(query, nameFilter, baseTypeFilter, classFilter, runeFilter, ladderFilter);
 
             cmd.CommandText = query;
             cmd.Connection.Open();
@@ -98,17 +120,18 @@ WHERE
                     if (!reader.IsDBNull(0)) item.ID = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) item.Name = reader.GetString(1);
                     if (!reader.IsDBNull(2)) item.BaseType1 = reader.GetString(2);
-                    if (!reader.IsDBNull(3)) item.Rune1 = reader.GetString(3);
-                    if (!reader.IsDBNull(3)) item.Rune2 = reader.GetString(3);
-                    if (!reader.IsDBNull(3)) item.Rune3 = reader.GetString(3);
-                    if (!reader.IsDBNull(3)) item.Rune4 = reader.GetString(3);
-                    if (!reader.IsDBNull(3)) item.Rune5 = reader.GetString(3);
-                    if (!reader.IsDBNull(3)) item.Rune6 = reader.GetString(3);
-                    if (!reader.IsDBNull(4)) item.Lvl = reader.GetInt32(4);
-                    if (!reader.IsDBNull(5)) item.Str = reader.GetInt32(5);
-                    if (!reader.IsDBNull(6)) item.Dex = reader.GetInt32(6);
-                    if (!reader.IsDBNull(6)) item.Ladder = reader.GetBoolean(6);
-                    if (!reader.IsDBNull(6)) item.Class = reader.GetString(6);
+                    if (!reader.IsDBNull(3)) item.BaseType2 = " or " + reader.GetString(3);
+                    if (!reader.IsDBNull(4)) item.Rune1 = reader.GetString(4);
+                    if (!reader.IsDBNull(5)) item.Rune2 = reader.GetString(5);
+                    if (!reader.IsDBNull(6)) item.Rune3 = reader.GetString(6);
+                    if (!reader.IsDBNull(7)) item.Rune4 = reader.GetString(7);
+                    if (!reader.IsDBNull(8)) item.Rune5 = reader.GetString(8);
+                    if (!reader.IsDBNull(9)) item.Rune6 = reader.GetString(9);
+                    if (!reader.IsDBNull(10)) item.Lvl = reader.GetInt32(10);
+                    if (!reader.IsDBNull(11)) item.Str = reader.GetInt32(11);
+                    if (!reader.IsDBNull(12)) item.Dex = reader.GetInt32(12);
+                    if (!reader.IsDBNull(13)) item.Ladder = reader.GetBoolean(13);
+                    if (!reader.IsDBNull(14)) item.Class = reader.GetString(14);
                     items.Add(item);
                 }
                 cmd.Connection.Close();

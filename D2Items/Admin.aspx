@@ -1,6 +1,15 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/D2.master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="D2Items.Admin" %>
 <%@ MasterType VirtualPath="~/D2.master" %>
 
+<asp:Content runat="server" ID="HeaderContent" ContentPlaceHolderID="ContentHeaderPlaceHolder" >
+    <div class="section-header row-fluid">
+        <h1 class="span8 d2font">Data Entry</h1>
+    </div>
+    <div class="row-fluid">
+        <hr class="span12" />
+    </div>
+</asp:Content>
+
 <asp:Content runat="server" ID="MainContent" ContentPlaceHolderID="MainContentPlaceHolder">
     <asp:Label runat="server" ID="updateLabel1" Text="" Visible="false" ForeColor="Red" Font-Bold="true" />
 

@@ -39,17 +39,17 @@
 
         <asp:Label runat="server" Text="Level Range" /><br />
         <UC:IntRangePicker ID="minLvlDDL" runat="server" Max="99" Width="75" />
-        <UC:IntRangePicker ID="maxLvlDDL" runat="server" Max="99" Width="75" SelectedText="99" /><br />
+        <UC:IntRangePicker ID="maxLvlDDL" runat="server" Max="99" Width="75" /><br />
 
         <asp:Label runat="server" Text="Strength Range" /><br />
-        <asp:TextBox ID="minStrTB" runat="server" Width="75" MaxLength="3" />
-        <asp:TextBox ID="maxStrTB" runat="server" Width="75" MaxLength="3" />
+        <asp:TextBox ID="minStrTB" runat="server" Width="75" MaxLength="3" Placeholder="0" />
+        <asp:TextBox ID="maxStrTB" runat="server" Width="75" MaxLength="3" Placeholder="999" />
         <asp:CompareValidator ControlToValidate="minStrTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator>
         <asp:CompareValidator ControlToValidate="maxStrTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator><br />
 
         <asp:Label runat="server" Text="Dexterity Range" /><br />
-        <asp:TextBox ID="minDexTB" runat="server" Width="75" MaxLength="3" />
-        <asp:TextBox ID="maxDexTB" runat="server" Width="75" MaxLength="3" />
+        <asp:TextBox ID="minDexTB" runat="server" Width="75" MaxLength="3" Placeholder="0" />
+        <asp:TextBox ID="maxDexTB" runat="server" Width="75" MaxLength="3" Placeholder="999" />
         <asp:CompareValidator ControlToValidate="minDexTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator>
         <asp:CompareValidator ControlToValidate="maxDexTB" runat="server" ErrorMessage="*" Operator="DataTypeCheck" Type="Integer" ></asp:CompareValidator><br />
 
@@ -79,31 +79,34 @@
         <br />
 
         <asp:ListView runat="server" ID="ItemList" OnPagePropertiesChanging="ItemList_PagePropertiesChanging">
+
             <LayoutTemplate>
                 <div runat="server" id="ItemPlaceholder"></div>
         
-                <asp:DataPager runat="server" ID="ItemsPager" PageSize="20" PagedControlID="ItemList">
+                <asp:DataPager runat="server" ID="ItemsPager" PageSize="5" PagedControlID="ItemList">
                   <Fields>
-                    <asp:NumericPagerField ButtonType="Link" ButtonCount="5" />
+                    <asp:NumericPagerField ButtonType="Link" ButtonCount="10" PreviousPageText="<-" NextPageText="->" />
                   </Fields>
                 </asp:DataPager>
             </LayoutTemplate>
     
             <ItemTemplate>
                 <div id="Div1" runat="server" class="inner-block" style="overflow: auto; overflow-y: hidden; max-width: 1400px;">
-                    <asp:Label ID="Label2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>
+                    <div class="span12" style="border-bottom: 1px solid #d2e6fc;"></div>
+                    <asp:Label ID="Label2" runat="server" CssClass="d2font" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType1") %>'></asp:Label>
+                    <asp:Label ID="Label10" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType2") %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label9" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Rune1") + " " + DataBinder.Eval(Container.DataItem, "Rune2") + " " + DataBinder.Eval(Container.DataItem, "Rune3") + " " + DataBinder.Eval(Container.DataItem, "Rune4") + " " + DataBinder.Eval(Container.DataItem, "Rune5") + " " + DataBinder.Eval(Container.DataItem, "Rune6")  %>'></asp:Label>
                     <br />
-                    <asp:Label ID="Label3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Lvl") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%# "Level: " + DataBinder.Eval(Container.DataItem, "Lvl") %>'></asp:Label>
                     <br/>
-                    <asp:Label ID="Label4" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Str") %>'></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text='<%# "Str: " + DataBinder.Eval(Container.DataItem, "Str") %>'></asp:Label>
                     <br/>
-                    <asp:Label ID="Label5" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Dex") %>'></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text='<%# "Dex: " + DataBinder.Eval(Container.DataItem, "Dex") %>'></asp:Label>
                     <br />
-                    <asp:Label ID="Label7" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Ladder") %>'></asp:Label>
+                    <asp:Label ID="Label7" runat="server" Text='<%# "Ladder Only: " + DataBinder.Eval(Container.DataItem, "Ladder") %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label6" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Class") %>'></asp:Label>
                     <br />
