@@ -14,11 +14,11 @@ namespace D2Items.Entity
 
             string query =
 @"SELECT
-    ID,
-    name,
-    baseType1,
-    baseType2,
-    baseType3,
+    i.ID,
+    i.name,
+    i.baseType1,
+    i.baseType2,
+    i.baseType3,
     rune1,
     rune2,
     rune3,
@@ -32,7 +32,10 @@ namespace D2Items.Entity
     ladder,
     class
 FROM 
-    T_Items
+    T_Items i INNER JOIN T_ItemTypes it
+        ON i.ID = it.itemID
+            INNER JOIN T_BaseTypes bt
+                ON it.baseTypeID = bt.ID
 WHERE 
     {0}
     {1}
@@ -67,8 +70,19 @@ ORDER BY
 
             if (Item.BaseType != null)
             {
-                baseTypeFilter = "(baseType1 LIKE '%'+@baseType+'%' OR baseType2 LIKE '%'+@baseType+'%' OR baseType3 LIKE '%'+@baseType+'%') AND";
-                cmd.Parameters.Add(new SqlParameter("@baseType", Item.BaseType));
+                if (Item.BaseType == "Weapons")
+                {
+                    baseTypeFilter = "bt.name = 'Weapons' OR bt.isMelee = 1 OR bt.name LIKE '%Missile%'";
+                }
+                else if (Item.BaseType == "Melee Weapons")
+                {
+                    baseTypeFilter = "bt.name = 'Weapons' OR bt.isMelee = 1";
+                }
+                else
+                {
+                    baseTypeFilter = "bt.name LIKE '%'+@baseType+'%' AND";
+                    cmd.Parameters.Add(new SqlParameter("@baseType", Item.BaseType));
+                }
             }
 
             if (Item.Class != null)
