@@ -10,7 +10,10 @@ namespace D2Items.Controls
         protected override void OnPreRender(EventArgs e)
         {
             base.OnPreRender(e);
-            Populate();
+            if (Items.Count == 0)
+            {
+                Populate();
+            }
         }
 
         private void Populate()
@@ -19,7 +22,7 @@ namespace D2Items.Controls
 
             for (int i = 0; i <= Max; i++)
             {
-                this.Items.Add(new ListItem(i.ToString()));
+                Items.Add(new ListItem(i.ToString()));
             }
         }
     }

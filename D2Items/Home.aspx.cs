@@ -20,6 +20,10 @@ namespace D2Items
             {
                 qualityPanel.Visible = false;
                 runesPanel.Visible = false;
+                runePicker1.SelectedIndex = 0;
+                runePicker2.SelectedIndex = 0; runePicker2.Visible = false;
+                runePicker3.SelectedIndex = 0; runePicker3.Visible = false;
+                runePicker4.SelectedIndex = 0; runePicker4.Visible = false;
             }
 
             if (Page.IsPostBack == true && ItemList.Visible == true)
@@ -49,7 +53,6 @@ namespace D2Items
             item.Name = nameTB.Text;
             item.MinLvl = minLvlDDL.SelectedIndex;
             if (maxLvlDDL.SelectedIndex != 0) { item.MaxLvl = maxLvlDDL.SelectedIndex; } else { item.MaxLvl = 99; }
-            //item.MaxLvl = maxLvlDDL.SelectedIndex;
 
             if (minStrTB.Text != "") { item.MinStr = int.Parse(minStrTB.Text); } else { item.MinStr = 0; }
             if (maxStrTB.Text != "") { item.MaxStr = int.Parse(maxStrTB.Text); } else { item.MaxStr = 999; }

@@ -18,11 +18,11 @@ namespace D2Items.Controls
         {
             get
             {
-                return this.SelectedItem.Text;
+                return SelectedItem.Text;
             }
             set
             {
-                ListItem li = this.Items.FindByText(value);
+                ListItem li = Items.FindByText(value);
                 if (li != null)
                 {
                     li.Selected = true;
@@ -33,7 +33,7 @@ namespace D2Items.Controls
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (this.Items.Count == 0)
+            if (Items.Count == 0)
             {
                 InitializeDropDownList();
                 GetCollectionFromDatabase();
@@ -43,9 +43,9 @@ namespace D2Items.Controls
 
         protected void InitializeDropDownList()
         {
-            if (this.IncludeInitialItem)
+            if (IncludeInitialItem)
             {
-                this.Items.Add(new ListItem(this.InitialText, this.InitialValue));
+                Items.Add(new ListItem(InitialText, InitialValue));
             }
         }
 
@@ -59,7 +59,7 @@ namespace D2Items.Controls
         {
             foreach (ModelClass item in collection)
             {
-                this.Items.Add(new ListItem(item.Label, item.ID.ToString()));
+                Items.Add(new ListItem(item.Label, item.ID.ToString()));
             }
         }
     }

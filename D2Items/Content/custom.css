@@ -3,16 +3,22 @@
 
 @font-face {
     font-family: 'avqestregular';
+    src: url('../fonts/DIABLO.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'avqestheader';
     src: url('../fonts/DIABLO_H.ttf') format('truetype');
 }
 
 .d2font{
     font-family:"avqestregular";
-    font-size:20px;
+    font-size:25px;
+    font-weight: bold;
 }
 
 h1.d2font{
-    font-family:"avqestregular";
+    font-family:"avqestheader";
     font-size:40px;
 }
 

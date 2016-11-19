@@ -13,4 +13,3 @@ C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\bi
 C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\bin\EntityFramework.xml
 C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\obj\Debug\D2Items.dll
 C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\obj\Debug\D2Items.pdb
-C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\obj\Debug\D2Items.csprojResolveAssemblyReference.cache

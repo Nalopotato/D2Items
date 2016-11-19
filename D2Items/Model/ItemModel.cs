@@ -28,7 +28,7 @@
         {
             get
             {
-                return this.Name;
+                return Name;
             }
         }        
     }
