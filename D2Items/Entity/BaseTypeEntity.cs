@@ -17,7 +17,7 @@ namespace D2Items.Entity
                 FROM
                     T_BaseTypes
                 ORDER BY
-                    name";
+                    name DESC";
 
             using (var Connection = new SqlConnection(D2ConnectionString))
             {

@@ -75,24 +75,25 @@ ORDER BY
 
             if (Item.Rune1 != null)
             {
-                runeFilter += "(rune1 = @rune1 OR rune2 = @rune1 OR rune3 = @rune1 OR rune4 = @rune1 OR rune5 = @rune1 OR rune6 = @rune1) AND";
+                runeFilter += "((rune1 = @rune1 OR rune2 = @rune1 OR rune3 = @rune1 OR rune4 = @rune1 OR rune5 = @rune1 OR rune6 = @rune1)";
                 cmd.Parameters.Add(new SqlParameter("@rune1", Item.Rune1));
             }
             if (Item.Rune2 != null)
             {
-                runeFilter += "(rune1 = @rune2 OR rune2 = @rune2 OR rune3 = @rune2 OR rune4 = @rune2 OR rune5 = @rune2 OR rune6 = @rune2) AND";
-                cmd.Parameters.Add(new SqlParameter("@rune2", Item.Rune1));
+                runeFilter += " AND (rune1 = @rune2 OR rune2 = @rune2 OR rune3 = @rune2 OR rune4 = @rune2 OR rune5 = @rune2 OR rune6 = @rune2)";
+                cmd.Parameters.Add(new SqlParameter("@rune2", Item.Rune2));
             }
             if (Item.Rune3 != null)
             {
-                runeFilter += "(rune1 = @rune3 OR rune2 = @rune3 OR rune3 = @rune3 OR rune4 = @rune3 OR rune5 = @rune3 OR rune6 = @rune3) AND";
-                cmd.Parameters.Add(new SqlParameter("@rune3", Item.Rune1));
+                runeFilter += " AND (rune1 = @rune3 OR rune2 = @rune3 OR rune3 = @rune3 OR rune4 = @rune3 OR rune5 = @rune3 OR rune6 = @rune3)";
+                cmd.Parameters.Add(new SqlParameter("@rune3", Item.Rune3));
             }
             if (Item.Rune4 != null)
             {
-                runeFilter += "(rune1 = @rune4 OR rune2 = @rune4 OR rune3 = @rune4 OR rune4 = @rune4 OR rune5 = @rune4 OR rune6 = @rune4) AND";
-                cmd.Parameters.Add(new SqlParameter("@rune4", Item.Rune1));
+                runeFilter += " AND (rune1 = @rune4 OR rune2 = @rune4 OR rune3 = @rune4 OR rune4 = @rune4 OR rune5 = @rune4 OR rune6 = @rune4)";
+                cmd.Parameters.Add(new SqlParameter("@rune4", Item.Rune4));
             }
+            if (runeFilter != "") { runeFilter += ") AND"; }
 
             if (Item.Ladder == true) { ladderFilter = "ladder = 'true' AND"; }
 
@@ -120,7 +121,7 @@ ORDER BY
                     if (!reader.IsDBNull(0)) item.ID = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) item.Name = reader.GetString(1);
                     if (!reader.IsDBNull(2)) item.BaseType1 = reader.GetString(2);
-                    if (!reader.IsDBNull(3)) item.BaseType2 = " or " + reader.GetString(3);
+                    if (!reader.IsDBNull(3)) item.BaseType2 = reader.GetString(3);
                     if (!reader.IsDBNull(4)) item.Rune1 = reader.GetString(4);
                     if (!reader.IsDBNull(5)) item.Rune2 = reader.GetString(5);
                     if (!reader.IsDBNull(6)) item.Rune3 = reader.GetString(6);

@@ -21,6 +21,11 @@ namespace D2Items
                 qualityPanel.Visible = false;
                 runesPanel.Visible = false;
             }
+
+            if (Page.IsPostBack == true && ItemList.Visible == true)
+            {
+                ItemList.Visible = false;
+            }
         }
 
         private void BindData()
@@ -78,6 +83,7 @@ namespace D2Items
             }).ToList();
 
             DataBind();
+            ItemList.Visible = true;
         }
 
         protected void submitButton_Click(object sender, EventArgs e)
@@ -113,6 +119,42 @@ namespace D2Items
         {
             (ItemList.FindControl("ItemsPager") as DataPager).SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
             BindData();
+        }
+
+        protected void runePicker1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (runePicker1.SelectedIndex > 0)
+            {
+                runePicker2.Visible = true;
+            }
+            else
+            {
+                runePicker2.Visible = false;
+            }
+        }
+
+        protected void runePicker2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (runePicker2.SelectedIndex > 0)
+            {
+                runePicker3.Visible = true;
+            }
+            else
+            {
+                runePicker3.Visible = false;
+            }
+        }
+
+        protected void runePicker3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (runePicker3.SelectedIndex > 0)
+            {
+                runePicker4.Visible = true;
+            }
+            else
+            {
+                runePicker4.Visible = false;
+            }
         }
     }
 }

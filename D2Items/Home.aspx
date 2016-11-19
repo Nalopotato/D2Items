@@ -60,10 +60,10 @@
             <div class="row-fluid"><hr class="span12" /></div>
 
             <asp:Label runat="server" Text="Runes:" /><br />
-            <UC:RunePicker runat="server" ID="runePicker1" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" />
-            <UC:RunePicker runat="server" ID="runePicker2" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" />
-            <UC:RunePicker runat="server" ID="runePicker3" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" />
-            <UC:RunePicker runat="server" ID="runePicker4" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" />
+            <UC:RunePicker runat="server" ID="runePicker1" AutoPostBack="true" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" OnSelectedIndexChanged="runePicker1_SelectedIndexChanged" />
+            <UC:RunePicker runat="server" ID="runePicker2" AutoPostBack="true" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" OnSelectedIndexChanged="runePicker2_SelectedIndexChanged" />
+            <UC:RunePicker runat="server" ID="runePicker3" AutoPostBack="true" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" OnSelectedIndexChanged="runePicker3_SelectedIndexChanged" />
+            <UC:RunePicker runat="server" ID="runePicker4" InitialText="None" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" />
         </asp:Panel>
 
         <div class="row-fluid"><hr class="span12" /></div>
@@ -91,12 +91,13 @@
             </LayoutTemplate>
     
             <ItemTemplate>
-                <div id="Div1" runat="server" class="inner-block" style="overflow: auto; overflow-y: hidden; max-width: 1400px;">
+                <div id="Div1" runat="server" class="inner-block" style="overflow: auto; overflow-y: hidden; max-width: 1400px; margin: 4px 0px 5px 3px;">
                     <div class="span12" style="border-bottom: 1px solid #d2e6fc;"></div>
                     <asp:Label ID="Label2" runat="server" CssClass="d2font" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType1") %>'></asp:Label>
-                    <asp:Label ID="Label10" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType2") %>'></asp:Label>
+                    <asp:Label ID="Label10" runat="server" Text='<%# " or " + DataBinder.Eval(Container.DataItem, "BaseType2") %>' 
+                        Visible='<%# DataBinder.Eval(Container.DataItem, "BaseType2") != null %>'></asp:Label>
                     <br />
                     <asp:Label ID="Label9" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Rune1") + " " + DataBinder.Eval(Container.DataItem, "Rune2") + " " + DataBinder.Eval(Container.DataItem, "Rune3") + " " + DataBinder.Eval(Container.DataItem, "Rune4") + " " + DataBinder.Eval(Container.DataItem, "Rune5") + " " + DataBinder.Eval(Container.DataItem, "Rune6")  %>'></asp:Label>
                     <br />
@@ -106,10 +107,13 @@
                     <br/>
                     <asp:Label ID="Label5" runat="server" Text='<%# "Dex: " + DataBinder.Eval(Container.DataItem, "Dex") %>'></asp:Label>
                     <br />
-                    <asp:Label ID="Label7" runat="server" Text='<%# "Ladder Only: " + DataBinder.Eval(Container.DataItem, "Ladder") %>'></asp:Label>
-                    <br />
-                    <asp:Label ID="Label6" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Class") %>'></asp:Label>
-                    <br />
+                    <asp:Panel runat="server" Visible='<%# DataBinder.Eval(Container.DataItem, "Ladder") %>'>
+                        <asp:Label ID="Label7" runat="server" Text="Ladder Only" ForeColor="DarkRed" Font-Bold="true"></asp:Label>
+                        <br />
+                    </asp:Panel>
+                    <asp:Panel runat="server" Visible='<%# DataBinder.Eval(Container.DataItem, "Class") != null %>'>
+                        <asp:Label ID="Label6" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Class") %>'></asp:Label>
+                    </asp:Panel>
                 </div>
             </ItemTemplate>
             <EmptyDataTemplate>
