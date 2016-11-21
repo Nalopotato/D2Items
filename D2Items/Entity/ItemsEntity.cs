@@ -127,30 +127,13 @@ ORDER BY
                 cmd.Parameters.Add(new SqlParameter("@sockets", Item.Sockets));
             }
 
-            if (Item.ModsList.Count > 1)
+            if (Item.ModsList.Count > 0)
             {
-                modsFilter = "(";
-
                 foreach (ItemModsModel Mod in Item.ModsList)
                 {
-                    if (Item.ModsList.LastIndexOf(Mod) < (Item.ModsList.Count - 1))
-                    {
-                        modsFilter += "im.modID = @modID" + Item.ModsList.LastIndexOf(Mod) + " OR ";
-                    }
-                    else
-                    {
-                        modsFilter += "im.modID = @modID" + Item.ModsList.LastIndexOf(Mod) + ") AND ";
-                    }
+                    modsFilter += "i.ID in (SELECT itemID FROM T_ItemMods WHERE modID = @modID" + Item.ModsList.LastIndexOf(Mod) + ") AND ";
 
                     cmd.Parameters.Add(new SqlParameter("@modID" + Item.ModsList.LastIndexOf(Mod), Mod.ModID));
-                }
-            }
-            else if(Item.ModsList.Count == 1)
-            {
-                foreach (ItemModsModel Mod in Item.ModsList)
-                {
-                    modsFilter = "im.modID = @modID AND";
-                    cmd.Parameters.Add(new SqlParameter("@modID", Mod.ModID));
                 }
             }
 
