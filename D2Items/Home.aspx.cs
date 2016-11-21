@@ -43,10 +43,10 @@ namespace D2Items
             if (runePicker3.SelectedIndex != 0) { item.Rune3 = runePicker3.SelectedText; }
             if (runePicker4.SelectedIndex != 0) { item.Rune4 = runePicker4.SelectedText; }
 
-            mod.ModID = modPicker1.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
-            mod.ModID = modPicker2.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
-            mod.ModID = modPicker3.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
-            mod.ModID = modPicker4.SelectedIndex; mods.Add(mod);
+            if (modPicker1.SelectedIndex > 0) { mod.ModID = int.Parse(modPicker1.SelectedValue); mods.Add(mod); mod = new ItemModsModel(); }
+            if (modPicker2.SelectedIndex > 0) { mod.ModID = int.Parse(modPicker2.SelectedValue); mods.Add(mod); mod = new ItemModsModel(); }
+            if (modPicker3.SelectedIndex > 0) { mod.ModID = int.Parse(modPicker3.SelectedValue); mods.Add(mod); mod = new ItemModsModel(); }
+            if (modPicker4.SelectedIndex > 0) { mod.ModID = int.Parse(modPicker4.SelectedValue); mods.Add(mod); }
 
             item.ModsList = mods;
 

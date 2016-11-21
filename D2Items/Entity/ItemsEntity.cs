@@ -33,10 +33,12 @@ namespace D2Items.Entity
     ladder,
     class
 FROM 
-    T_Items i INNER JOIN T_ItemTypes it
+    T_Items i LEFT JOIN T_ItemTypes it
         ON i.ID = it.itemID
-            INNER JOIN T_BaseTypes bt
+            RIGHT JOIN T_BaseTypes bt
                 ON it.baseTypeID = bt.ID
+    INNER JOIN T_ItemMods im
+		ON i.ID = im.itemID
 WHERE 
     {0}
     {1}
@@ -44,6 +46,7 @@ WHERE
     {3}
     {4}
     {5}
+    {6}
     lvl >= @minLvl AND
     lvl <= @maxLvl AND
     ((str >= @minStr AND
@@ -63,6 +66,7 @@ ORDER BY
             string runeFilter = "";
             string ladderFilter = "";
             string socketsFilter = "";
+            string modsFilter = "";
 
             if (Item.Name != "")
             {
@@ -123,6 +127,33 @@ ORDER BY
                 cmd.Parameters.Add(new SqlParameter("@sockets", Item.Sockets));
             }
 
+            if (Item.ModsList.Count > 1)
+            {
+                modsFilter = "(";
+
+                foreach (ItemModsModel Mod in Item.ModsList)
+                {
+                    if (Item.ModsList.LastIndexOf(Mod) < (Item.ModsList.Count - 1))
+                    {
+                        modsFilter += "im.modID = @modID" + Item.ModsList.LastIndexOf(Mod) + " OR ";
+                    }
+                    else
+                    {
+                        modsFilter += "im.modID = @modID" + Item.ModsList.LastIndexOf(Mod) + ") AND ";
+                    }
+
+                    cmd.Parameters.Add(new SqlParameter("@modID" + Item.ModsList.LastIndexOf(Mod), Mod.ModID));
+                }
+            }
+            else if(Item.ModsList.Count == 1)
+            {
+                foreach (ItemModsModel Mod in Item.ModsList)
+                {
+                    modsFilter = "im.modID = @modID AND";
+                    cmd.Parameters.Add(new SqlParameter("@modID", Mod.ModID));
+                }
+            }
+
             cmd.Parameters.Add(new SqlParameter("@minLvl", Item.MinLvl));
             cmd.Parameters.Add(new SqlParameter("@maxLvl", Item.MaxLvl));
             cmd.Parameters.Add(new SqlParameter("@minStr", Item.MinStr));
@@ -132,7 +163,7 @@ ORDER BY
             cmd.Parameters.Add(new SqlParameter("@rarity", Item.Rarity));
             //cmd.Parameters.Add(new SqlParameter("@quality", Item.Quality));
 
-            query = String.Format(query, nameFilter, baseTypeFilter, classFilter, runeFilter, ladderFilter, socketsFilter);
+            query = String.Format(query, nameFilter, baseTypeFilter, classFilter, runeFilter, ladderFilter, socketsFilter, modsFilter);
 
             cmd.CommandText = query;
             cmd.Connection.Open();

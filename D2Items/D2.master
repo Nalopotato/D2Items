@@ -11,7 +11,7 @@
     <title>Diablo 2 Items</title>
 </head>
 
-<body>
+<body style="background-color: darkgrey;">
     <form id="form1" runat="server">
         <asp:ContentPlaceHolder ID="SiteHeaderPlaceholder" runat="server">
 
