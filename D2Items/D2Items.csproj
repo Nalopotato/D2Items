@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="Entity\BaseTypeEntity.cs" />
     <Compile Include="Entity\DatabaseEntity.cs" />
+    <Compile Include="Entity\ItemModsEntity.cs" />
     <Compile Include="Entity\ItemsEntity.cs" />
     <Compile Include="Entity\ItemTypeEntity.cs" />
     <Compile Include="Entity\ModEntity.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\SkillsEntity.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +159,7 @@
     <Compile Include="Model\ItemTypeModel.cs" />
     <Compile Include="Model\ModModel.cs" />
     <Compile Include="Model\RuneModel.cs" />
+    <Compile Include="Model\SkillModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Queries.cs" />
   </ItemGroup>

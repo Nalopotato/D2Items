@@ -13,22 +13,22 @@ namespace D2Items
         {
             if (rarityRadioList.SelectedIndex == 2)
             {
-                qualityPanel.Visible = true;
+                qualityPanel.Visible = false;
                 runesPanel.Visible = true;
             }
             else
             {
-                qualityPanel.Visible = false;
+                qualityPanel.Visible = true;
                 runesPanel.Visible = false;
                 runePicker1.SelectedIndex = 0;
-                runePicker2.SelectedIndex = 0; runePicker2.Visible = false;
-                runePicker3.SelectedIndex = 0; runePicker3.Visible = false;
-                runePicker4.SelectedIndex = 0; runePicker4.Visible = false;
+                runePicker2.SelectedIndex = 0;
+                runePicker3.SelectedIndex = 0;
+                runePicker4.SelectedIndex = 0;
             }
 
-            if (Page.IsPostBack == true && ItemList.Visible == true)
+            if (Page.IsPostBack)
             {
-                ItemList.Visible = false;
+                BindData();
             }
         }
 
@@ -38,10 +38,10 @@ namespace D2Items
             var mod = new ItemModsModel();
             var mods = new List<ItemModsModel>();
 
-            if (runePicker1.SelectedText != "None") { item.Rune1 = runePicker1.SelectedText; }
-            if (runePicker2.SelectedText != "None") { item.Rune2 = runePicker2.SelectedText; }
-            if (runePicker3.SelectedText != "None") { item.Rune3 = runePicker3.SelectedText; }
-            if (runePicker4.SelectedText != "None") { item.Rune4 = runePicker4.SelectedText; }
+            if (runePicker1.SelectedIndex != 0) { item.Rune1 = runePicker1.SelectedText; }
+            if (runePicker2.SelectedIndex != 0) { item.Rune2 = runePicker2.SelectedText; }
+            if (runePicker3.SelectedIndex != 0) { item.Rune3 = runePicker3.SelectedText; }
+            if (runePicker4.SelectedIndex != 0) { item.Rune4 = runePicker4.SelectedText; }
 
             mod.ModID = modPicker1.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
             mod.ModID = modPicker2.SelectedIndex; mods.Add(mod); mod = new ItemModsModel();
@@ -84,7 +84,8 @@ namespace D2Items
                 Str = im.Str,
                 Dex = im.Dex,
                 Ladder = im.Ladder,
-                Class = im.Class
+                Class = im.Class,
+                ModsList = im.ModsList
             }).ToList();
 
             DataBind();
@@ -111,8 +112,11 @@ namespace D2Items
 
             runePicker1.SelectedIndex = 0;
             runePicker2.SelectedIndex = 0;
+            runePicker2.Visible = false;
             runePicker3.SelectedIndex = 0;
+            runePicker3.Visible = false;
             runePicker4.SelectedIndex = 0;
+            runePicker4.Visible = false;
 
             modPicker1.SelectedIndex = 0;
             modPicker2.SelectedIndex = 0;
@@ -135,6 +139,11 @@ namespace D2Items
             else
             {
                 runePicker2.Visible = false;
+                runePicker2.SelectedIndex = 0;
+                runePicker3.Visible = false;
+                runePicker3.SelectedIndex = 0;
+                runePicker4.Visible = false;
+                runePicker4.SelectedIndex = 0;
             }
         }
 
@@ -147,6 +156,9 @@ namespace D2Items
             else
             {
                 runePicker3.Visible = false;
+                runePicker3.SelectedIndex = 0;
+                runePicker4.Visible = false;
+                runePicker4.SelectedIndex = 0;
             }
         }
 
@@ -159,6 +171,7 @@ namespace D2Items
             else
             {
                 runePicker4.Visible = false;
+                runePicker4.SelectedIndex = 0;
             }
         }
     }

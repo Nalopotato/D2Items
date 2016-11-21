@@ -1,8 +1,9 @@
-﻿namespace D2Items.Model
+﻿using System.Collections.Generic;
+
+namespace D2Items.Model
 {
     public class ItemModel : BaseModel
     {
-        //public int ID { get; set; }
         public string Name { get; set; }
         public int Lvl { get; set; }
         public int Str { get; set; }
@@ -23,6 +24,7 @@
         public int Quality { get; set; }
         public int Rarity { get; set; }
         public string Class { get; set; }
+        public List<ItemModsModel> ModsList { get; set; }
 
         public override string Label
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using D2Items.Model;
+using D2Items.Entity;
 
 namespace D2Items.Entity
 {
@@ -13,7 +14,7 @@ namespace D2Items.Entity
             List<ItemModel> Items = new List<ItemModel>();
 
             string query =
-@"SELECT
+@"SELECT DISTINCT
     i.ID,
     i.name,
     i.baseType1,
@@ -45,8 +46,9 @@ WHERE
     {5}
     lvl >= @minLvl AND
     lvl <= @maxLvl AND
-    str >= @minStr AND
-    str <= @maxStr AND
+    ((str >= @minStr AND
+    str <= @maxStr) OR
+    str IS NULL) AND
     dex >= @minDex AND
     dex <= @maxDex AND
     rarity = @rarity
@@ -64,7 +66,7 @@ ORDER BY
 
             if (Item.Name != "")
             {
-                nameFilter = "name LIKE '%@name%' AND";
+                nameFilter = "i.name LIKE '%'+@name+'%' AND";
                 cmd.Parameters.Add(new SqlParameter("@name", Item.Name));
             }
 
@@ -141,7 +143,6 @@ ORDER BY
                 while (reader.Read())
                 {
                     var item = new ItemModel();
-                    //item.ID = ID;
                     if (!reader.IsDBNull(0)) item.ID = reader.GetInt32(0);
                     if (!reader.IsDBNull(1)) item.Name = reader.GetString(1);
                     if (!reader.IsDBNull(2)) item.BaseType1 = reader.GetString(2);
@@ -159,9 +160,12 @@ ORDER BY
                     if (!reader.IsDBNull(14)) item.Sockets = reader.GetInt32(14);
                     if (!reader.IsDBNull(15)) item.Ladder = reader.GetBoolean(15);
                     if (!reader.IsDBNull(16)) item.Class = reader.GetString(16);
+                    item.ModsList = ItemModsEntity.GetAll(item.ID);
                     items.Add(item);
                 }
                 cmd.Connection.Close();
+                cmd.Dispose();
+                reader.Close();
                 return items;
             }
         }

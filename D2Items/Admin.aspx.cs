@@ -6,7 +6,7 @@ using D2Items.Entity;
 
 namespace D2Items
 {
-    public partial class Admin : System.Web.UI.Page
+    public partial class Admin : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
