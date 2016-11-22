@@ -99,6 +99,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="fonts\DIABLO.ttf" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -111,7 +112,7 @@
   <ItemGroup>
     <Compile Include="Controls\BaseTypePicker.cs" />
     <Compile Include="Controls\ExtendedDropDownList.cs" />
-    <Compile Include="Controls\ItemTypePicker.cs" />
+    <Compile Include="Controls\SubTypePicker.cs" />
     <Compile Include="Controls\ModPicker.cs" />
     <Compile Include="Controls\IntRangePicker.cs" />
     <Compile Include="Controls\RunePicker.cs" />

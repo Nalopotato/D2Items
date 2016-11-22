@@ -12,9 +12,7 @@ namespace D2Items.Entity
             string query =
 
                 @"SELECT
-                    ID,
-                    name,
-                    class
+                    name
                 FROM
                     T_Skills
                 WHERE

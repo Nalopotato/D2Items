@@ -122,6 +122,8 @@ namespace D2Items
             modPicker2.SelectedIndex = 0;
             modPicker3.SelectedIndex = 0;
             modPicker4.SelectedIndex = 0;
+
+            BindData();
         }
 
         protected void ItemList_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)

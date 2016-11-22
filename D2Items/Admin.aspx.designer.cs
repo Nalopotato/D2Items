@@ -58,6 +58,15 @@ namespace D2Items {
         protected global::System.Web.UI.WebControls.TextBox dexTB;
         
         /// <summary>
+        /// socketsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel socketsPanel;
+        
+        /// <summary>
         /// socketsDDL control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,22 @@ namespace D2Items {
         protected global::D2Items.Controls.BaseTypePicker baseTypePicker3;
         
         /// <summary>
-        /// itemTypePicker control.
+        /// subTypePicker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::D2Items.Controls.ItemTypePicker itemTypePicker;
+        protected global::D2Items.Controls.SubTypePicker subTypePicker;
+        
+        /// <summary>
+        /// runesPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel runesPanel;
         
         /// <summary>
         /// runePicker1 control.

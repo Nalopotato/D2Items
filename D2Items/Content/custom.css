@@ -15,12 +15,16 @@
     font-family:"avqestregular";
     font-size:25px;
     font-weight: bold;
-    text-shadow: 0 0 2px #ff8500;
+    /*text-shadow: 0 0 2px #000000;*/
+    /*color: #c6b000;*/
+    /*color: #a49200*/
 }
 
 h1.d2font{
     font-family:"avqestheader";
     font-size:40px;
+    text-shadow: 0 0 5px #ff5e00;
+    color: #000000;
 }
 
 input[type="submit"]{
@@ -39,4 +43,18 @@ input[type="submit"]{
 }
 input[type="submit"]:hover{
     background-color:darkgray;
+}
+
+#ModsListDiv {
+    color: #1820aa;
+}
+
+#ItemListDiv {
+    font-weight: bold;
+}
+
+.d2divider {
+     border-bottom: 1px solid #d2e6fc;
+     border-top: 1px solid #d2e6fc;
+     margin: 8px 0px 8px 0px;
 }

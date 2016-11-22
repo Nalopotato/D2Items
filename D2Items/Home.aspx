@@ -56,7 +56,7 @@
         <UC:BaseTypePicker ID="baseTypePicker" runat="server" InitialValue="0" InitialText="Select" IncludeInitialItem="true" AutoPostBack="true" />
         
 
-        <asp:Panel runat="server" ID="runesPanel" style="border-bottom: 1px solid #d2e6fc; border-top: 1px solid #d2e6fc; margin: 8px 0px 8px 0px;">
+        <asp:Panel runat="server" ID="runesPanel" CssClass="d2divider">
             <div style="margin-top: 10px;">
                 <UC:RunePicker runat="server" ID="runePicker1" AutoPostBack="true" InitialText="Rune 1" IncludeInitialItem="true" InitialValue="0" Width="75" OnSelectedIndexChanged="runePicker1_SelectedIndexChanged" />
                 <UC:RunePicker runat="server" ID="runePicker2" AutoPostBack="true" InitialText="Rune 2" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" OnSelectedIndexChanged="runePicker2_SelectedIndexChanged" />
@@ -74,7 +74,7 @@
         <asp:Button runat="server" ID="submitButton" Text="Submit" OnClick="submitButton_Click" />
         <asp:Button runat="server" ID="clearButton2" Text="Clear Fields" OnClick="clearButton_Click" /><br />
         <br />
-            </div>
+    </div>
     <div class="col-md-8">
         <asp:ListView runat="server" ID="ItemList" OnPagePropertiesChanging="ItemList_PagePropertiesChanging">
 
@@ -93,7 +93,7 @@
                     <div style="border-bottom: 1px solid #d2e6fc;"></div>
                     <asp:Label ID="Label2" runat="server" CssClass="d2font" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>
                     <br />
-                    <div class="col-md-4">
+                    <div id="ItemListDiv" class="col-md-4">
                         <asp:Label ID="Label8" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "BaseType1") %>'></asp:Label>
                         <asp:Label ID="Label10" runat="server" Text='<%# " or " + DataBinder.Eval(Container.DataItem, "BaseType2") %>' 
                             Visible='<%# DataBinder.Eval(Container.DataItem, "BaseType2") != null %>'></asp:Label>
@@ -119,7 +119,7 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Class") %>'></asp:Label>
                         </asp:Panel>
                     </div>
-                    <div class="col-md-8 text-center">
+                    <div id="ModsListDiv" class="col-md-8 text-center">
                         <asp:ListView runat="server" ID="ModsList" DataSource='<%# DataBinder.Eval(Container.DataItem, "ModsList") %>'>
                             <ItemTemplate>
                                 <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>'></asp:Label>

@@ -186,13 +186,40 @@ ORDER BY
 
         public static bool Create(ItemModel Item)
         {
-            const string query = @"INSERT INTO
-        T_Items (
+            const string query = @"
+    BEGIN TRAN
+
+    UPDATE T_Items
+    SET 
+        name = @name,
+        baseType1 = @baseType1,
+        baseType2 = @baseType2,
+        baseType3 = @baseType3,
+        rune1 = @rune1,
+        rune2 = @rune2,
+        rune3 = @rune3,
+        rune4 = @rune4,
+        rune5 = @rune5,
+        rune6 = @rune6,
+        quality = @quality,
+        rarity = @rarity,
+        lvl = @lvl,
+        str = @str,
+        dex = @dex,
+        sockets = @sockets,
+        version = @version,
+        ladder = @ladder,
+        class = @class,
+        subType = @subType
+    WHERE name = @name
+
+    IF (@@ROWCOUNT = 0)
+
+    INSERT T_Items (
             name,
             baseType1,
             baseType2,
             baseType3,
-            itemType,
             rune1,
             rune2,
             rune3,
@@ -207,14 +234,14 @@ ORDER BY
             sockets,
             version,
             ladder,
-            class
+            class,
+            subType
         )
         VALUES (
             @name,
             @baseType1,
             @baseType2,
             @baseType3,
-            @itemType,
             @rune1,
             @rune2,
             @rune3,
@@ -229,8 +256,10 @@ ORDER BY
             @sockets,
             @version,
             @ladder,
-            @class
-        )";
+            @class,
+            @subType
+        )
+        COMMIT";
 
             using (var connection = new SqlConnection(D2ConnectionString))
             {
@@ -241,7 +270,6 @@ ORDER BY
                     cmd.Parameters.Add(new SqlParameter("@baseType1", Item.BaseType1));
                     cmd.Parameters.Add(new SqlParameter("@baseType2", Item.BaseType2));
                     cmd.Parameters.Add(new SqlParameter("@baseType3", Item.BaseType3));
-                    cmd.Parameters.Add(new SqlParameter("@itemType", Item.ItemType));
                     cmd.Parameters.Add(new SqlParameter("@rune1", Item.Rune1));
                     cmd.Parameters.Add(new SqlParameter("@rune2", Item.Rune2));
                     cmd.Parameters.Add(new SqlParameter("@rune3", Item.Rune3));
@@ -257,6 +285,7 @@ ORDER BY
                     cmd.Parameters.Add(new SqlParameter("@version", Item.Version));
                     cmd.Parameters.Add(new SqlParameter("@ladder", Item.Ladder));
                     cmd.Parameters.Add(new SqlParameter("@class", Item.Class));
+                    cmd.Parameters.Add(new SqlParameter("@subType", Item.SubType));
 
                     ConvertNullsToDBNulls(cmd.Parameters);
                     var recordsAffected = cmd.ExecuteNonQuery();
@@ -288,30 +317,56 @@ ORDER BY
 
             foreach (ItemModsModel ItemMod in ItemMods)
             {
-                query = @"INSERT INTO
+                query = @"
 
-                T_ItemMods (
+                BEGIN TRAN
+
+                UPDATE T_ItemMods
+                SET 
+                    modID = @modID" + count + @",
+                    itemID = @itemID" + count + @",
+                    value1 = @value1" + count + @",
+                    value2 = @value2" + count + @",
+                    skill = @skill" + count + @"
+                WHERE modID = @modID" + count + @" AND itemID = @itemID" + count + @" AND value1 = @value1" + count + @"
+
+                IF (@@ROWCOUNT = 0)
+
+                INSERT T_ItemMods (
                     modID,
                     itemID,
                     value1,
-                    value2
+                    value2,
+                    skill
                 )
                 VALUES (
                     @modID" + count + @",
                     @itemID" + count + @",
                     @value1" + count + @",
-                    @value2" + count + @"
-                )";
+                    @value2" + count + @",
+                    @skill" + count + @"
+                )
+                COMMIT";
 
                 using (var connection = new SqlConnection(D2ConnectionString))
                 {
                     connection.Open();
                     using (var cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.Add(new SqlParameter("@itemID" + count, itemID));
                         cmd.Parameters.Add(new SqlParameter("@modID" + count, ItemMod.ModID));
+                        cmd.Parameters.Add(new SqlParameter("@itemID" + count, itemID));
                         cmd.Parameters.Add(new SqlParameter("@value1" + count, ItemMod.ModValue1));
                         cmd.Parameters.Add(new SqlParameter("@value2" + count, ItemMod.ModValue2));
+
+                        if (ItemMod.ID == 94 || ItemMod.ID == 124)
+                        {
+                            ItemMod.Skill = SkillsEntity.GetAll(ItemMod.ID);
+                            cmd.Parameters.Add(new SqlParameter("@skill" + count, ItemMod.Skill));
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add(new SqlParameter("@skill" + count, DBNull.Value));
+                        }
 
                         ConvertNullsToDBNulls(cmd.Parameters);
                         recordsAffected = cmd.ExecuteNonQuery();

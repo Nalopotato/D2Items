@@ -14,7 +14,7 @@ namespace D2Items.Model
         public string BaseType1 { get; set; }
         public string BaseType2 { get; set; }
         public string BaseType3 { get; set; }
-        public string ItemType { get; set; }
+        public int SubType { get; set; }
         public string Rune1 { get; set; }
         public string Rune2 { get; set; }
         public string Rune3 { get; set; }

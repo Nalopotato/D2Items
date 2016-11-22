@@ -43,5 +43,31 @@ namespace D2Items.Entity
                 }
             }
         }
+
+        public static int GetID(string name)
+        {
+            int baseType = 0;
+            string select = @"SELECT ID FROM T_BaseTypes WHERE name = @name";
+
+            using (var Connection = new SqlConnection(D2ConnectionString))
+            {
+                Connection.Open();
+                using (var cmd = new SqlCommand(select, Connection))
+                {
+                    cmd.Parameters.Add(new SqlParameter("@name", name));
+
+                    using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.SingleResult))
+                    {
+                        while (reader.Read())
+                        {
+                            baseType = reader.GetInt32(0);
+                        }
+
+                        cmd.Connection.Close();
+                        return baseType;
+                    }
+                }
+            }
+        }
     }
 }
