@@ -58,7 +58,7 @@ namespace D2Items
             if (minStrTB.Text != "") { item.MinStr = int.Parse(minStrTB.Text); } else { item.MinStr = 0; }
             if (maxStrTB.Text != "") { item.MaxStr = int.Parse(maxStrTB.Text); } else { item.MaxStr = 999; }
             if (minDexTB.Text != "") { item.MinDex = int.Parse(minDexTB.Text); } else { item.MinDex = 0; }
-            if (maxStrTB.Text != "") { item.MaxDex = int.Parse(maxDexTB.Text); } else { item.MaxDex = 999; }
+            if (maxDexTB.Text != "") { item.MaxDex = int.Parse(maxDexTB.Text); } else { item.MaxDex = 999; }
             if (baseTypePicker.SelectedIndex > 0) { item.BaseType = baseTypePicker.SelectedText; }
             if (classDDL.SelectedIndex > 0) { item.Class = classDDL.SelectedValue; }
             item.Ladder = ladderCB.Checked;
