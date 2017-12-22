@@ -14,3 +14,13 @@ C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\bi
 C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\obj\Debug\D2Items.dll
 C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\obj\Debug\D2Items.pdb
 C:\Users\msgra\OneDrive\Documents\Visual Studio 2015\Projects\D2Items\D2Items\obj\Debug\D2Items.csprojResolveAssemblyReference.cache
+C:\Users\Me\Desktop\D2Items-master\D2Items\bin\D2Items.dll.config
+C:\Users\Me\Desktop\D2Items-master\D2Items\bin\D2Items.dll
+C:\Users\Me\Desktop\D2Items-master\D2Items\bin\D2Items.pdb
+C:\Users\Me\Desktop\D2Items-master\D2Items\bin\AjaxControlToolkit.dll
+C:\Users\Me\Desktop\D2Items-master\D2Items\bin\EntityFramework.dll
+C:\Users\Me\Desktop\D2Items-master\D2Items\bin\EntityFramework.xml
+C:\Users\Me\Desktop\D2Items-master\D2Items\obj\Debug\D2Items.csproj.CoreCompileInputs.cache
+C:\Users\Me\Desktop\D2Items-master\D2Items\obj\Debug\D2Items.dll
+C:\Users\Me\Desktop\D2Items-master\D2Items\obj\Debug\D2Items.pdb
+C:\Users\Me\Desktop\D2Items-master\D2Items\obj\Debug\D2Items.csprojResolveAssemblyReference.cache

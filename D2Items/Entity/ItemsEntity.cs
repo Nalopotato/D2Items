@@ -302,13 +302,14 @@ ORDER BY
             int recordsAffected = 0;
             object itemID;
             
-            string query = @"SELECT ID FROM T_Items WHERE name = '" + Item.Name + "'";
+            string query = @"SELECT ID FROM T_Items WHERE name = @name";
 
             using (var connection = new SqlConnection(D2ConnectionString))
             {
                 connection.Open();
                 using (var cmd = new SqlCommand(query, connection))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@name", Item.Name));
                     ConvertNullsToDBNulls(cmd.Parameters);
                     itemID = cmd.ExecuteScalar();
                     cmd.Connection.Close();

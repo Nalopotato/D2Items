@@ -41,8 +41,8 @@
         <UC:IntRangePicker ID="socketsDDL" runat="server" Max="6" Width="75" AutoPostBack="true"/><br />
 
         <asp:Label runat="server" Text="Level Range" /><br />
-        <UC:IntRangePicker ID="minLvlDDL" runat="server" Max="99" Width="75" AutoPostBack="true" />
-        <UC:IntRangePicker ID="maxLvlDDL" runat="server" Max="99" Width="75" AutoPostBack="true" /><br />
+        <UC:IntRangePicker ID="minLvlDDL" runat="server" Max="89" Width="75" AutoPostBack="true" />
+        <UC:IntRangePicker ID="maxLvlDDL" runat="server" Max="89" Width="75" AutoPostBack="true" /><br />
 
         <asp:Label runat="server" Text="Strength Range" /><br />
         <asp:TextBox ID="minStrTB" runat="server" Width="75" MaxLength="3" Placeholder="0" onkeydown = "return (!(event.keyCode>=65) && event.keyCode!=32);" />
@@ -58,13 +58,14 @@
 
         <asp:Panel runat="server" ID="runesPanel" CssClass="d2divider">
             <div style="margin-top: 10px;">
-                <UC:RunePicker runat="server" ID="runePicker1" AutoPostBack="true" InitialText="Rune 1" IncludeInitialItem="true" InitialValue="0" Width="75" OnSelectedIndexChanged="runePicker1_SelectedIndexChanged" />
-                <UC:RunePicker runat="server" ID="runePicker2" AutoPostBack="true" InitialText="Rune 2" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" OnSelectedIndexChanged="runePicker2_SelectedIndexChanged" />
-                <UC:RunePicker runat="server" ID="runePicker3" AutoPostBack="true" InitialText="Rune 3" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" OnSelectedIndexChanged="runePicker3_SelectedIndexChanged" />
-                <UC:RunePicker runat="server" ID="runePicker4" AutoPostBack="true" InitialText="Rune 4" IncludeInitialItem="true" InitialValue="0" Width="75" Visible="false" />
+                <UC:RunePicker runat="server" ID="runePicker1" AutoPostBack="true" InitialText="Rune 1" IncludeInitialItem="true" InitialValue="0" Width="85" OnSelectedIndexChanged="runePicker1_SelectedIndexChanged" />
+                <UC:RunePicker runat="server" ID="runePicker2" AutoPostBack="true" InitialText="Rune 2" IncludeInitialItem="true" InitialValue="0" Width="85" Visible="false" OnSelectedIndexChanged="runePicker2_SelectedIndexChanged" />
+                <UC:RunePicker runat="server" ID="runePicker3" AutoPostBack="true" InitialText="Rune 3" IncludeInitialItem="true" InitialValue="0" Width="85" Visible="false" OnSelectedIndexChanged="runePicker3_SelectedIndexChanged" />
+                <UC:RunePicker runat="server" ID="runePicker4" AutoPostBack="true" InitialText="Rune 4" IncludeInitialItem="true" InitialValue="0" Width="85" Visible="false" />
             </div>
         </asp:Panel>
 
+        <br />
         <asp:Label runat="server" Text="Mods:" /><br />
         <UC:ModPicker runat="server" ID="modPicker1" InitialText="None" IncludeInitialItem="true" InitialValue="0" AutoPostBack="true" /><br />
         <UC:ModPicker runat="server" ID="modPicker2" InitialText="None" IncludeInitialItem="true" InitialValue="0" AutoPostBack="true" /><br />

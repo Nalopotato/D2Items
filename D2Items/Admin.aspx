@@ -156,8 +156,6 @@
             <br />
             <asp:Button runat="server" ID="submitButton" Text="Submit" OnClick="submitButton_Click" />
 
-            <br />
-            <asp:Label runat="server" ID="updateLabel2" Text="" Visible="false" ForeColor="Red" Font-Bold="true" />
         </div>
     </div>
 </asp:Content>

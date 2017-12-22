@@ -100,6 +100,7 @@ namespace D2Items
         protected void clearButton_Click(object sender, EventArgs e)
         {
             nameTB.Text = "";
+            socketsDDL.SelectedIndex = 0;
             minLvlDDL.SelectedIndex = 0;
             maxLvlDDL.SelectedIndex = 0;
             minStrTB.Text = "";

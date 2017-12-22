@@ -85,8 +85,6 @@ namespace D2Items
                 if (ItemsEntity.Create(Item) && ItemsEntity.InstertMods(Item, ItemMods) && ItemTypeEntity.Create(Item.BaseType1)) {
                     updateLabel1.Text = Item.Name + " has been added to the database";
                     updateLabel1.Visible = true;
-                    updateLabel2.Text = Item.Name + " has been added to the database";
-                    updateLabel2.Visible = true;
 
                     nameTB.Text = "";
                     levelTB.Text = "";

@@ -9,7 +9,7 @@ namespace D2Items.Entity
     public class DatabaseEntity<ModelClass>// where ModelClass : BaseModel, new()
     {
         protected delegate ModelClass ReaderToModelMapper(SqlDataReader Reader);
-        protected static string D2ConnectionString = "Server=DESKTOP-S20RLK9;Database=D2Items;Trusted_Connection=Yes;Initial Catalog=D2Items; Application Name=D2 Items; Type System Version=Latest;";
+        protected static string D2ConnectionString = "Server=DESKTOP-8BC25ES\\SQLEXPRESS;Database=D2Items;Trusted_Connection=Yes;Initial Catalog=D2Items; Application Name=D2 Items; Type System Version=Latest;";
         protected static SqlConnection Connection = new SqlConnection(D2ConnectionString);
 
         public virtual List<ModelClass> GetAll(int? ID = null)
